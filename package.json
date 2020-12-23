@@ -1,0 +1,22 @@
+{
+  "name": "stem-discord-web",
+  "version": "1.0.0",
+  "description": "stem.help",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stem-discord/website.git"
+  },
+  "keywords": [
+    "web-server"
+  ],
+  "author": "nopeless",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stem-discord/website/issues"
+  },
+  "homepage": "https://github.com/stem-discord/website#readme"
+}
