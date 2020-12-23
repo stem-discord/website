@@ -1,2 +1,2 @@
 # website
-stem.help
+[stem.help](https://stem.help)
