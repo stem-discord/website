@@ -163,7 +163,7 @@ nav {
 
 .top-nav.icon {
   height: 100%;
-  width: auto;
+  object-fit: initial;
 }
 .top-nav div {
   height: 100%;
@@ -176,6 +176,7 @@ nav {
   padding: 2rem;
   height: 100%;
   width: auto;
+  object-fit: contain;
 }
 
 .menu-icon i {
