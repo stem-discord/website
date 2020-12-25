@@ -5,7 +5,7 @@ const navPageLinks = [];
 nav
   .querySelectorAll(".side-nav-fixed .nav-list .nav-item")
   .forEach((v) => navPageLinks.push(v.querySelector("a")));
-console.log(navPageLinks);
+
 const pageOpaque = document.querySelector(".page-opaque");
 const page = document.querySelector(".page");
 const openMenu = document.querySelector(".open");
