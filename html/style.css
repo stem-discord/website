@@ -284,6 +284,10 @@ div.menu-icon.open {
 .nav-item:hover {
   background: var(--nav-opacity);
 }
+.nav-link.current {
+  text-decoration: underline;
+}
+
 .nav-item a {
   padding: 1.5rem 1.5rem 1.5rem 2rem;
   display: block;

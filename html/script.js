@@ -1,6 +1,11 @@
 // select elements
 
 let nav = document.querySelector(".side-nav");
+const navPageLinks = [];
+nav
+  .querySelectorAll(".side-nav-fixed .nav-list .nav-item")
+  .forEach((v) => navPageLinks.push(v.querySelector("a")));
+console.log(navPageLinks);
 const pageOpaque = document.querySelector(".page-opaque");
 const page = document.querySelector(".page");
 const openMenu = document.querySelector(".open");
@@ -43,4 +48,12 @@ menuClose.addEventListener("click", () => nav.close());
 pageOpaque.addEventListener("click", () => nav.close());
 window.addEventListener("scroll", () => {
   nav.scrollFix();
+});
+navPageLinks.forEach((a) => {
+  a.addEventListener("click", (event) => {
+    nav
+      .querySelector(".side-nav-fixed .nav-list .nav-item a.current")
+      .classList.remove("current");
+    a.classList.add("current");
+  });
 });
