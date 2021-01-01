@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/stem-discord/website/issues"
   },
-  "homepage": "https://github.com/stem-discord/website#readme"
+  "homepage": "https://github.com/stem-discord/website#readme",
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-plugin-vue": "^7.4.0"
+  }
 }
