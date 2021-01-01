@@ -1,4 +1,5 @@
-# server
+# DO NOT MAKE A PR ON THIS BRANCH
+(I'm currently working on the Vue migration and it would be better to work alone until a frame is formed)
 
 # website
 
