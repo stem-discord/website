@@ -1,22 +1,44 @@
 {
   "name": "stem-discord-web",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "stem.help",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stem-discord/website.git"
+  "dependencies": {
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0"
   },
   "keywords": [
     "web-server"
   ],
   "author": "nopeless",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stem-discord/website.git"
+  },
   "bugs": {
     "url": "https://github.com/stem-discord/website/issues"
   },
-  "homepage": "https://github.com/stem-discord/website#readme"
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "chai": "^4.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2"
+  }
 }
