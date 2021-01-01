@@ -50,7 +50,7 @@ window.addEventListener("scroll", () => {
   nav.scrollFix();
 });
 navPageLinks.forEach((a) => {
-  a.addEventListener("click", (event) => {
+  a.addEventListener("click", () => {
     nav
       .querySelector(".side-nav-fixed .nav-list .nav-item a.current")
       .classList.remove("current");
