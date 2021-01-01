@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>STEM Discord</title>
+    <meta charset="utf-8" />
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- meta stuff -->
+    <meta
+      content="STEM Helpers & Students (SCIENCE, TECHNOLOGY, ENGINEERING & MATHS)"
+      property="og:title"
+    />
+    <meta
+      content="An in-development webserver that probably does nothing right now"
+      property="og:description"
+    />
+    <meta content="https://stem.help" property="og.url" />
+    <meta
+      content="https://cdn.discordapp.com/splashes/493173110799859713/f073c93fda38c1db3efc81e63fe7e33a.jpg?size=1280"
+      property="og:image"
+    />
+
+    <link
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Aldrich&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="top-nav">
+        <div class="top-nav icon"><img src="img/logo.png" alt="rose" /></div>
+        <div id="title"><h1>{{ header }}</h1></div>
+    </div>
+    <div class="main-content">
+        <div class="side-nav" id="side-nav">
+            <div><ul class="nav-list" style="visibility: hidden; padding: 0"></ul></div>
+            <div class="side-nav-fixed">
+                <div class="menu-icon close">
+                    <i class="icon ion-md-close"></i>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a v-for="link in links" :href="link.destination">{{ link.text }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <section class="page">
+            <div class="breadcrumbs">
+                <div class="menu-icon open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+                <p>Home</p>
+            </div>
+            <div class="container">
+                <div class="main-message" id="main-message">
+                    <h1>{{ messageHeader }}</h1>
+                    <p v-for="paragraph in paragraphs">
+                        <b>{{ paragraph.subheading }}</b><br>
+                        {{ paragraph.mainText }}
+                        <br>
+                        <br>
+                    </p>
+                </div>
+                <button class="join-button" onclick="location.href='https://discord.gg/stem'" value="Invite Link">JOIN NOW</button>
+                <br />
+                <br />
+                <br />
+                <iframe src="https://discord.com/widget?id=493173110799859713&theme=dark" width="100%" height="500" allowtransparency="true"
+                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="page-opaque"></div>
+        </section>
+    </div>
+    <div class="menu-open-small">
+      <div>
+        <i class="icon ion-md-menu"></i>
+      </div>
+    </div>
+    <!-- footer stuff -->
+    <footer>
+      <div class="footer" id="footer">
+          <h1>{{ contact }}</h1>
+           <p>{{ credits }}</p>
+       </div>
+    </footer>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="scripts/script.js"></script>
+    </body>
+</html>
