@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>STEM Discord</title>
     <meta charset="utf-8" />
@@ -47,108 +47,52 @@
 
   <body>
     <div class="top-nav">
-      <div class="top-nav icon">
-        <img src="img/logo.png" alt="rose" />
-      </div>
-      <div>
-        <h1>STEM Helpers & Students</h1>
-      </div>
+        <div class="top-nav icon"><img src="img/logo.png" alt="rose" /></div>
+        <div id="title"><h1>{{ header }}</h1></div>
     </div>
     <div class="main-content">
-      <div class="side-nav">
-        <div>
-          <!-- the element that is used to make the width -->
-          <ul class="nav-list" style="visibility: hidden; padding: 0"></ul>
+        <div class="side-nav" id="side-nav">
+            <div><ul class="nav-list" style="visibility: hidden; padding: 0"></ul></div>
+            <div class="side-nav-fixed">
+                <div class="menu-icon close">
+                    <i class="icon ion-md-close"></i>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a v-for="link in links" :href="link.destination">{{ link.text }}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="side-nav-fixed">
-          <!-- the element that will be fixed once scrolled -->
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="#" class="nav-link current">Home</a>
-              <div class="menu-icon close">
-                <i class="icon ion-md-close"></i>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="https://discord.gg/stem" class="nav-link">Discord</a>
-            </li>
-            <li class="nav-item">
-              <a href="/rules" class="nav-link">Server rules</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a href="#" class="nav-link">About</a>
-            </li> -->
-          </ul>
-        </div>
-      </div>
-
-      <section class="page">
-        <div class="breadcrumbs">
-          <div class="menu-icon open">
-            <i class="icon ion-md-menu"></i>
-          </div>
-          <p>Home</p>
-        </div>
-
-        <div class="container">
-          <div>
-            <h1>Welcome to STEM</h1>
-            <p>
-              <b>About the server</b> <br />
-              A server dedicated to both tutoring and technical discussion in
-              STEM (Science, Technology, Engineering, Mathematics) topics for
-              students, professionals, and enthusiasts of all ages (13+) and
-              backgrounds. Whether you're a student or just interested in
-              learning about any of these subjects or related fields, this
-              server is for you! Feel free to start/join in a discussion in any
-              of our subject-related channels or just chill in any of our
-              general ones. <br />
-              <br />
-              <b>❯ Getting Started</b> <br />
-              Head on over to #get-roles to assign yourself some roles. <br />
-              ✪ If you're here to ask STEM questions, read #how-to-ask. <br />
-              ✪ Check out the pins 📌 in each channel for subject-related
-              resources! <br />
-              <br />
-              <b>❯ Expectations</b><br />
-              ✪ Respect all Discord ToS, Guidelines, and server staff. <br />
-              ✪ Post in the appropriate channel. <br />
-              ✪ Use English. <br />
-              ✪ Respect your fellow STEM members. Be civil and don't be toxic.
-              <br />
-              ✪ Do not spam. <br />
-              ✪ Do not post inappropriate content. <br />
-              ✪ No unsolicited advertising or any kind of promotions within the
-              server or DMs. <br />
-              <br />
-              You can report misconduct using #🔕contact-mods.
-            </p>
-            <button
-              class="join-button"
-              onclick="location.href='https://discord.gg/stem'"
-              value="Invite Link"
-            >
-              join now
-            </button>
-          </div>
-          <br />
-          <br />
-          <br />
-          <iframe
-            style="background: transparent !important"
-            src="https://discord.com/widget?id=493173110799859713&theme=dark"
-            width="100%"
-            height="500"
-            allowtransparency="true"
-            frameborder="0"
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-          ></iframe>
-        </div>
-        <br />
-        <br />
-        <br />
-        <div class="page-opaque"></div>
-      </section>
+        <section class="page">
+            <div class="breadcrumbs">
+                <div class="menu-icon open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+                <p>Home</p>
+            </div>
+            <div class="container">
+                <div class="main-message" id="main-message">
+                    <h1>{{ messageHeader }}</h1>
+                    <p v-for="paragraph in paragraphs">
+                        <b>{{ paragraph.subheading }}</b><br>
+                        {{ paragraph.mainText }}
+                        <br>
+                        <br>
+                    </p>
+                </div>
+                <button class="join-button" onclick="location.href='https://discord.gg/stem'" value="Invite Link">JOIN NOW</button>
+                <br />
+                <br />
+                <br />
+                <iframe src="https://discord.com/widget?id=493173110799859713&theme=dark" width="100%" height="500" allowtransparency="true"
+                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="page-opaque"></div>
+        </section>
     </div>
     <div class="menu-open-small">
       <div>
@@ -157,11 +101,12 @@
     </div>
     <!-- footer stuff -->
     <footer>
-      <div class="footer">
-        <h1>Contact me</h1>
-        <p>Owner nope#7777</p>
-      </div>
+      <div class="footer" id="footer">
+          <h1>{{ contact }}</h1>
+           <p>{{ credits }}</p>
+       </div>
     </footer>
-    <script type="text/javascript" src="script.js"></script>
-  </body>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="scripts/script.js"></script>
+    </body>
 </html>
