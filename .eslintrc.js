@@ -10,11 +10,11 @@ module.exports = {
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "indent": ["error", 2],
+    indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "double"],
-    "semi": ["error", "always"],
-    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }]
+    quotes: ["error", "double"],
+    semi: ["error", "always"],
+    "no-multiple-empty-lines": ["error", { max: 2, maxEOF: 0 }]
   },
   overrides: [
     {
