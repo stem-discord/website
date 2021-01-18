@@ -1,4 +1,5 @@
 /*global Vue*/
+/* eslint-disable */
 const title = new Vue({
   el: "#title",
   data: {
