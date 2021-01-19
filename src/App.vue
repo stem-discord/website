@@ -8,23 +8,127 @@
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  // use this font family
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+:root {
+  /* STYLES */
+  /* alphas */
+  --main-alpha: #613a94;
+  --main-alpha-text: #f3f3f3;
+  --main-alpha-border: #ddc8ff;
+  --main-alpha-stress: #ffffff;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  /* side nav */
+  --main-side: #525252;
+  --main-side-hover: #3b3b3b;
+  --main-side-text: #d6d6d6;
+  --main-side-stress: #ffffff;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  /* main content */
+  --main-background: #fbe9e6;
+  --main-background-text: #474747;
+  --main-background-text-info: #d1d1d1;
+  --main-background-button: #d69dfc;
+
+  /* CONFIG */
+  --container-max-width: 100rem;
+  --side-nav-width: 20rem;
+  --side-nav-transition: all 700ms cubic-bezier(0.3, 0.5, 0.6, 1);
+  --top-nav-height: 8rem;
+  --nav-opacity: #00000050;
+  --breadcrumb-height: 5rem;
+  --menu-width: 4rem;
+  --fade-in-out-transition: opacity 300ms ease-in-out;
 }
+
+// remove margins and paddings
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  border: 0;
+}
+
+// custom styles
+
+::selection {
+  color: white;
+  background: pink;
+}
+
+html {
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+a:link {
+  color: var(--main-background-text);
+}
+a:visited {
+  color: var(--main-side);
+}
+a:hover {
+  color: var(--main-background-text-info);
+}
+a:active {
+  color: var(--main-side-stress);
+}
+
+i {
+  font-size: 2rem;
+  padding: 0 1.3rem 0 1.3rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  padding: 1rem 0 1rem 0;
+  vertical-align: middle;
+}
+p {
+  font-size: 1.6rem;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  background-color: var(--main-background);
+}
+
+// old vue
+// #nav {
+//   padding: 30px;
+
+//   a {
+//     font-weight: bold;
+//     color: #2c3e50;
+
+//     &.router-link-exact-active {
+//       color: #42b983;
+//     }
+//   }
+// }
 </style>
