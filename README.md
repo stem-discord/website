@@ -1,6 +1,4 @@
-# DO NOT MAKE A PR ON THIS BRANCH
-
-(I'm currently working on the Vue migration and it would be better to work alone until a frame is formed)
+# Branch is pretty stable. Just do npm install and everything should work pretty fine. Make sure you have vue cli installed
 
 # node
 
