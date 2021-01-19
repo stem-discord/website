@@ -1,9 +1,17 @@
 <template>
   <div>
-    <h1 style="text-align: center;">404 Not found</h1>
+    <h1>404 Not found</h1>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "404 page"
+};
 </script>
+
+<style lang="scss" scoped>
+h1 {
+  text-align: center;
+}
+</style>
