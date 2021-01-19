@@ -16,6 +16,19 @@ const routes = [
     component: function() {
       return import(/* webpackChunkName: "about" */ "../views/About.vue");
     }
+  {
+    path: "/404",
+    name: "explicit 404",
+    component: function() {
+      return import("../views/404.vue");
+    }
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "catch page",
+    component: function() {
+      return import("../views/404.vue");
+    }
   }
 ];
 
