@@ -1,5 +1,10 @@
 # DO NOT MAKE A PR ON THIS BRANCH
+
 (I'm currently working on the Vue migration and it would be better to work alone until a frame is formed)
+
+# node
+
+uses `v15.5.0`. all other module dependencies only work with `v15`. if you project doesn't work just delete `node_modules` and abuse npm
 
 # website
 
