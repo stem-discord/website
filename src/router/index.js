@@ -16,6 +16,12 @@ const routes = [
     component: function() {
       return import(/* webpackChunkName: "about" */ "../views/About.vue");
     }
+  },
+  {
+    path: "/rules",
+    name: "rules of the server",
+    component: () => import("../views/MarkdownTest.vue")
+  },
   {
     path: "/404",
     name: "explicit 404",
