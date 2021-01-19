@@ -1,10 +1,24 @@
 <template>
-  <div id="nav">
+  <NavSection />
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </div>
+  </div> -->
   <router-view />
+  <FooterSection contact="Contact Me" credits="Owner nope#7777" />
 </template>
+
+<script>
+import NavSection from "@/components/NavSection.vue";
+import FooterSection from "@/components/FooterSection.vue";
+
+export default {
+  components: {
+    NavSection,
+    FooterSection
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
