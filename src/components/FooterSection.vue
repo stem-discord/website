@@ -1,4 +1,4 @@
-<template>
+a<template>
   <footer>
     <div>
       <!-- i dont think its a good idea to inject simple stuff, but lets try it -->
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "footer",
+  name: "footer section",
   props: {
     contact: String,
     credits: String
