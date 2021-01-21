@@ -20,28 +20,70 @@ body {
   justify-content: center;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,10), rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0),
-    rgba(0,0,0, 10)
-  ),url('https://i.pinimg.com/originals/26/01/03/2601039697d8c8c730ec09e78a8395e0.png');
+    #00000000, 
+    #00000000, 
+    #00000000, 
+    #00000000,
+    rgba(0,0,0,1)
+  ),
+  url('https://i.pinimg.com/originals/26/01/03/2601039697d8c8c730ec09e78a8395e0.png');
 }
 
-#logo {
-  width: 15%;
+header {
+  width: 100%;
+  padding: 15px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+}
+
+#icon {
+  border-radius: 100%;
+  width: 75px;
   height: auto;
 }
 
+.secret {
+  margin-left: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #00000000;
+}
+
+.secret:hover {
+  color: white;
+  transition-duration: 0.5s;
+}
+
+#secret2 {
+  position: absolute;
+  top: 15px;
+  right: 50px;
+}
+
+#image-scroll{
+  margin-top: 15px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.rooEmoji {
+  border-radius: 25px;
+  margin: 2.5px;
+}
+
 #main-text{
-  width: 75%;
+  width: 10em;
   overflow: hidden;
   white-space: nowrap;
-  margin: 0;
-  letter-spacing: .1em;
+  margin: 2px;
   color: white;
   font-family: 'Verdana';
   font-size: 24px;
   padding: 10px 25px;
-  border-radius: 15px;
-  animation: typing 3.5s steps(40, end);
+  animation: 
+  typing 2s steps(40, end),
+  blink-cursor 0.5s infinite ;
 }
 
 #subtext {
@@ -59,16 +101,85 @@ body {
 }
 
 #homelink a {
-  color: whitesmoke;
-
+  color: white;
 }
 
 #homelink a:hover {
-  color: white;
+  color: #818181;
   transition-duration: 0.5s;
 }
 
 @keyframes typing {
   from { width: 0 }
-  to { width: 75% }
+  to { width: 10em }
+}
+
+@keyframes blink-cursor {
+  from, to { border-right: solid 1px transparent }
+  50% { border-right: solid 1px white }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 4rem;
+  background-color: rgba(#000, 0.9); 
+  padding-left: 100%;
+  box-sizing: content-box;
+}
+
+.ticker {
+  display: inline-block;
+  height: 4rem;
+  line-height: 4rem;  
+  white-space: nowrap;
+  padding-right: 100%;
+  box-sizing: content-box;
+  -webkit-animation-iteration-count: infinite; 
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 30s;
+  animation-duration: 30s;
+}
+
+.ticker__item {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: inline-block;
+  padding: 0 2rem;
+  font-size: 2rem;
+  color: white;   
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .rooEmoji { width: 0 }
+  .secondaryRoo {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .rooEmoji { width: 0;}
+  #rooEmojiMain {
+    width: 100%;
+    height: auto;
+  }
 }
