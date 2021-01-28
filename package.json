@@ -15,11 +15,13 @@
   "dependencies": {
     "@vue/cli": "^4.5.10",
     "@vue/cli-shared-utils": "^4.5.11",
+    "body-parser": "^1.19.0",
     "connect-history-api-fallback": "^1.6.0",
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express-session": "^1.17.1",
+    "multer": "^1.4.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
