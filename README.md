@@ -4,6 +4,11 @@
 
 uses `v15.5.0`. all other module dependencies only work with `v15`. if you project doesn't work just delete `node_modules` and abuse npm
 
+# express
+
+this project uses express as backend. if you want to run this server WITH the backend, `do npm run express`  
+make sure to run `npm run build` so vue can build files to `./dist/`
+
 # website
 
 [stem.help](https://stem.help)
