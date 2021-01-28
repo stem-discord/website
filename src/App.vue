@@ -18,6 +18,10 @@ export default {
     NavSection,
     FooterSection,
   },
+  create() {
+    // add login code
+    // add vuex (hopefully)
+  },
 };
 </script>
 
