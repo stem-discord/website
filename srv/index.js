@@ -2,6 +2,7 @@ const express = require(`express`);
 const path = require(`path`);
 const morgan = require(`morgan`);
 const fs = require(`fs`);
+const dotenv = require(`dotenv`);
 // import socketIO from "socket.io";
 
 // https redirect is done on nginx
