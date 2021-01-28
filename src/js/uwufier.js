@@ -28,25 +28,25 @@ function uwufier(text) {
     new replacePair(/ok/gi, m => thisCase(m, `oki`)),
     new replacePair(/because/gi, m => thisCase(m, `cuz`)),
     new replacePair(/(?<![a-zA-Z])cry(?![a-zA-Z])/gi, m =>
-      thisCase(m, `cri ` + randomChoice([`;-;`, `😭`, `:c`]))
+      thisCase(m, `cri ` + randomChoice([`;-;`, `😭`, `:c`])),
     ),
     new replacePair(
       /((?![aeiounwy])\w)([aeiou])(?!l)/gi,
-      m => m[0] + (Math.random() > 0.5 ? thisCase(m[0], `w`) : ``) + m[1]
+      m => m[0] + (Math.random() > 0.5 ? thisCase(m[0], `w`) : ``) + m[1],
     ),
     new replacePair(/(?<=\w)[rl](?=\w)/gi, m => thisCase(m, `w`)),
     new replacePair(/is/gi, m =>
       casePreserveReplace(
         m,
         `s`,
-        thisCase(m, `z`).repeat(Math.floor(1 + Math.random() * 3))
-      )
+        thisCase(m, `z`).repeat(Math.floor(1 + Math.random() * 3)),
+      ),
     ),
     new replacePair(/a(nd)/gi, `$1`),
     new replacePair(/w+/gi, m => thisCase(m, `w`)),
     new replacePair(/(h)(i)/gi, `$1$2$2$2$2`),
     new replacePair(/([a-zA-Z?!~])\s+$/i, `$1$1$1`),
-    new replacePair(/\s+$/i, ``)
+    new replacePair(/\s+$/i, ``),
   ];
   pairs.forEach(rp => {
     text = text.replace(rp.re, rp.str);

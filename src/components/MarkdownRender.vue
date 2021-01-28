@@ -9,19 +9,21 @@ import { ref } from "vue";
 
 const content = ref(``);
 
-fetch(/*fk this for now*/).then(r => r.text().then(t => (content.value = t)));
+fetch(/*fk this for now*/).then((r) =>
+  r.text().then((t) => (content.value = t)),
+);
 
 export default {
   setup() {
     const md = ref(``);
     return {
       md,
-      content
+      content,
     };
   },
   name: `markdown renderer`,
   props: {
-    url: String
-  }
+    url: String,
+  },
 };
 </script>

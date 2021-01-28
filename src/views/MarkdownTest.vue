@@ -9,7 +9,7 @@ import MarkdownRender from "@/components/MarkdownRender.vue";
 
 export default {
   components: {
-    MarkdownRender
-  }
+    MarkdownRender,
+  },
 };
 </script>

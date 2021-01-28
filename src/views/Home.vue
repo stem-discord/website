@@ -14,7 +14,7 @@ export default {
   name: `Home`,
   components: {
     HelloWorld,
-    RP
-  }
+    RP,
+  },
 };
 </script>

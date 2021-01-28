@@ -11,6 +11,6 @@ module.exports = {
     express: {
       shouldServeApp: true,
       serverDir: `./srv`,
-    }
-  }
+    },
+  },
 };

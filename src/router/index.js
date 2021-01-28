@@ -5,7 +5,7 @@ const routes = [
   {
     path: `/`,
     name: `Home`,
-    component: Home
+    component: Home,
   },
   {
     path: `/about`,
@@ -15,32 +15,32 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: function() {
       return import(/* webpackChunkName: "about" */ `../views/About.vue`);
-    }
+    },
   },
   {
     path: `/rules`,
     name: `rules of the server`,
-    component: () => import(`../views/MarkdownTest.vue`)
+    component: () => import(`../views/MarkdownTest.vue`),
   },
   {
     path: `/404`,
     name: `explicit 404`,
     component: function() {
       return import(`../views/404.vue`);
-    }
+    },
   },
   {
     path: `/:pathMatch(.*)*`,
     name: `catch page`,
     component: function() {
       return import(`../views/404.vue`);
-    }
-  }
+    },
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;

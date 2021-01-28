@@ -13,8 +13,8 @@ export default {
   name: `footer section`,
   props: {
     contact: String,
-    credits: String
-  }
+    credits: String,
+  },
 };
 </script>
 

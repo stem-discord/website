@@ -15,8 +15,8 @@ import FooterSection from "@/components/FooterSection.vue";
 export default {
   components: {
     NavSection,
-    FooterSection
-  }
+    FooterSection,
+  },
 };
 </script>
 
