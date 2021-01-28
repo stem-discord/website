@@ -2,8 +2,37 @@ const express = require(`express`);
 const path = require(`path`);
 const morgan = require(`morgan`);
 const fs = require(`fs`);
-const dotenv = require(`dotenv`);
+const session = require(`express-session`);
+const bodyParser = require(`body-parser`);
+const multer = require(`multer`);
+// TODO: add db for storage object here
+const upload = multer();
+require(`dotenv`).config({ path: `../.env` });
 // import socketIO from "socket.io";
+
+// simple db handler
+class JSONFileHandler {
+  constructor(filePath) {
+    this.filePath = filePath;
+    try {
+      this.obj = require(filePath);
+    } catch (error) {
+      console.log(`error reading the json file`, error);
+      this.error = true;
+    }
+  }
+  save() {
+    fs.writeFileSync(this.filePath, JSON.stringify(this.obj, null, ` `), {
+      encoding: `utf8`,
+    });
+  }
+}
+
+const database = new JSONFileHandler(`/database.json`);
+
+const {
+  COOKIE_SECRET,
+} = process.env;
 
 // https redirect is done on nginx
 const accessLogStream = fs.createWriteStream(
@@ -11,6 +40,16 @@ const accessLogStream = fs.createWriteStream(
   { flags: `a` },
 );
 module.exports = (app) => {
+  // form parsers
+  app.use(bodyParser.urlencoded({extended: true}));
+
+  // cookies 🍪
+  app.use(session({
+    secret: COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  }));
+
   // logs
   app.use(morgan(`combined`, { stream: accessLogStream }));
 
@@ -20,7 +59,14 @@ module.exports = (app) => {
     res.json({msg: `works`});
   });
 
+  app.post(`/meme`, upload.single(`meme`), (req, res) => {
+    // add session id validation
+    // post it to a discord database channel and retrieve url
+  });
+
+  // discord login
   app.get(`/login`, (req, res) => {
+    // TODO: split this into a separate file
     res.json({msg: `l`});
   }); 
 
