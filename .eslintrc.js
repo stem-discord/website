@@ -8,13 +8,14 @@ module.exports = {
     ecmaVersion: 2020
   },
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    indent: ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "double"],
-    semi: ["error", "always"],
-    "no-multiple-empty-lines": ["error", { max: 2, maxEOF: 0 }]
+    "linebreak-style": [`error`, `unix`],
+    semi: [`error`, `always`],
+    quotes: [`error`, `backtick`],
+    indent: [`error`, 2],
+    "quote-props": [`error`, `as-needed`],
+    strict: 0,
+    "comma-dangle": [`error`, `always-multiline`],
+    "space-infix-ops": [`error`, { int32Hint: false }],
   },
   overrides: [
     {
