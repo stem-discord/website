@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "home nav"
+  name: `home nav`,
 };
 </script>
 

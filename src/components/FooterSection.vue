@@ -10,7 +10,7 @@ a<template>
 
 <script>
 export default {
-  name: "footer section",
+  name: `footer section`,
   props: {
     contact: String,
     credits: String

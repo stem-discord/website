@@ -22,42 +22,42 @@ function thisCase(a, b) {
 function uwufier(text) {
   console.log(`original text:\n${text}`);
   const pairs = [
-    new replacePair(/you/gi, m => thisCase(m, "u")),
-    new replacePair(/thanks/gi, m => thisCase(m, "tnx")),
-    new replacePair(/like/gi, m => thisCase(m, "lik")),
-    new replacePair(/ok/gi, m => thisCase(m, "oki")),
-    new replacePair(/because/gi, m => thisCase(m, "cuz")),
+    new replacePair(/you/gi, m => thisCase(m, `u`)),
+    new replacePair(/thanks/gi, m => thisCase(m, `tnx`)),
+    new replacePair(/like/gi, m => thisCase(m, `lik`)),
+    new replacePair(/ok/gi, m => thisCase(m, `oki`)),
+    new replacePair(/because/gi, m => thisCase(m, `cuz`)),
     new replacePair(/(?<![a-zA-Z])cry(?![a-zA-Z])/gi, m =>
-      thisCase(m, "cri " + randomChoice([";-;", "😭", ":c"]))
+      thisCase(m, `cri ` + randomChoice([`;-;`, `😭`, `:c`]))
     ),
     new replacePair(
       /((?![aeiounwy])\w)([aeiou])(?!l)/gi,
-      m => m[0] + (Math.random() > 0.5 ? thisCase(m[0], "w") : "") + m[1]
+      m => m[0] + (Math.random() > 0.5 ? thisCase(m[0], `w`) : ``) + m[1]
     ),
-    new replacePair(/(?<=\w)[rl](?=\w)/gi, m => thisCase(m, "w")),
+    new replacePair(/(?<=\w)[rl](?=\w)/gi, m => thisCase(m, `w`)),
     new replacePair(/is/gi, m =>
       casePreserveReplace(
         m,
-        "s",
-        thisCase(m, "z").repeat(Math.floor(1 + Math.random() * 3))
+        `s`,
+        thisCase(m, `z`).repeat(Math.floor(1 + Math.random() * 3))
       )
     ),
-    new replacePair(/a(nd)/gi, "$1"),
-    new replacePair(/w+/gi, m => thisCase(m, "w")),
-    new replacePair(/(h)(i)/gi, "$1$2$2$2$2"),
-    new replacePair(/([a-zA-Z?!~])\s+$/i, "$1$1$1"),
-    new replacePair(/\s+$/i, "")
+    new replacePair(/a(nd)/gi, `$1`),
+    new replacePair(/w+/gi, m => thisCase(m, `w`)),
+    new replacePair(/(h)(i)/gi, `$1$2$2$2$2`),
+    new replacePair(/([a-zA-Z?!~])\s+$/i, `$1$1$1`),
+    new replacePair(/\s+$/i, ``)
   ];
   pairs.forEach(rp => {
     text = text.replace(rp.re, rp.str);
   });
-  const emojiPatch = "🥰😍😘😻💌💘💝💖💗💓💞💕💟❣️❤️🧡💛💚💙💜";
+  const emojiPatch = `🥰😍😘😻💌💘💝💖💗💓💞💕💟❣️❤️🧡💛💚💙💜`;
   const emojis = [];
   for (const ch of emojiPatch) {
     emojis.push(ch);
   }
   function buildWholesome() {
-    let final = "";
+    let final = ``;
     for (
       let i = 0;
       i < Math.min(5, 1 + text.length / 5, Math.floor(Math.random() * 5));
@@ -69,10 +69,10 @@ function uwufier(text) {
   }
   console.log(`output:\n${text}`);
   return (
-    text.replace(/([.?!~]\s+|$)/g, () => " " + buildWholesome() + " ") +
+    text.replace(/([.?!~]\s+|$)/g, () => ` ` + buildWholesome() + ` `) +
     (Math.random() > 0.3
-      ? randomChoice(["uwu", "owo", ":3", "xd", "c:", "^o^"])
-      : "")
+      ? randomChoice([`uwu`, `owo`, `:3`, `xd`, `c:`, `^o^`])
+      : ``)
   );
 }
 

@@ -11,7 +11,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 import RP from "@/components/RepeatString.vue";
 
 export default {
-  name: "Home",
+  name: `Home`,
   components: {
     HelloWorld,
     RP

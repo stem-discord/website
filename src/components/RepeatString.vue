@@ -8,6 +8,6 @@ export default {
   prop: {
     times: Number
   },
-  props: ["text", "times"]
+  props: [`text`, `times`]
 };
 </script>

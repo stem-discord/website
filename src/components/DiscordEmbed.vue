@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "discord widget"
+  name: `discord widget`,
 };
 </script>
 
