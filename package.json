@@ -14,9 +14,11 @@
   },
   "dependencies": {
     "@vue/cli": "^4.5.10",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-shared-utils": "^4.5.11",
     "connect-history-api-fallback": "^1.6.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
+    "express-session": "^1.17.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -24,7 +26,7 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "^4.5.10",
     "@vue/cli-plugin-unit-mocha": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-service": "^4.5.11",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^2.0.0-0",
