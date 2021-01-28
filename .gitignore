@@ -21,7 +21,7 @@ access.log*
 
 # Editor directories and files
 .idea
-.vscode
+// removed vscode to sync settings
 *.suo
 *.ntvs*
 *.njsproj
