@@ -13,6 +13,17 @@ make sure to run `npm run build` so vue can build files to `./dist/`
 
 [stem.help](https://stem.help)
 
+# database
+
+now before u guys go flaming on me on git, i know that json db is bad but i need to make this thing until 29th or smth so please let me use a simple known method that i cant fk up
+
+# configuring
+```env
+HTTP_PORT=80
+HTTPS_PORT=443
+DISCORD_CLIENT_SECRET=the discord application token
+DISCORD_BOT_TOKEN=the discord BOT token```
+
 # vue setup
 
 ## Project setup
