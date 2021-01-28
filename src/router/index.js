@@ -23,6 +23,11 @@ const routes = [
     component: () => import(`../views/MarkdownTest.vue`),
   },
   {
+    path: `/meme`,
+    name: `we doin meme events`,
+    component: () => import(`../views/Meme.vue`),
+  },
+  {
     path: `/404`,
     name: `explicit 404`,
     component: function() {
