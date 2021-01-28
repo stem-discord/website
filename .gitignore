@@ -3,6 +3,9 @@ node_modules
 /dist
 /local
 
+# database
+database.json
+
 # global env files
 .env
 
