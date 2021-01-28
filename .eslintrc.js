@@ -17,7 +17,7 @@ module.exports = {
     "comma-dangle": [`error`, `always-multiline`],
     "space-infix-ops": [`error`, { int32Hint: false }],
     'vue/html-indent': [
-      'error',
+      `error`,
       2,
       {
         attribute: 1,
@@ -28,7 +28,7 @@ module.exports = {
       },
     ],
     'vue/script-indent': [
-      'error',
+      `error`,
       2,
       {
         baseIndent: 0,
@@ -37,7 +37,7 @@ module.exports = {
       },
     ],
     'vue/max-attributes-per-line': [
-      'error',
+      `error`,
       {
         singleline: 1,
         multiline: {
@@ -47,25 +47,25 @@ module.exports = {
       },
     ],
     'vue/html-closing-bracket-newline': [
-      'error',
+      `error`,
       {
-        singleline: 'never',
-        multiline: 'never',
+        singleline: `never`,
+        multiline: `never`,
       },
     ],
     'vue/html-self-closing': [
-      'error',
+      `error`,
       {
         html: {
-          void: 'always',
-          normal: 'always',
-          component: 'always',
+          void: `always`,
+          normal: `always`,
+          component: `always`,
         },
-        svg: 'always',
-        math: 'always',
+        svg: `always`,
+        math: `always`,
       },
     ],
-    'vue/attribute-hyphenation': ['error', 'always'],
+    'vue/attribute-hyphenation': [`error`, `always`],
   },
   overrides: [
     {
