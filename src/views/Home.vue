@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <HelloWorld msg="Welcome to Thonk land" />
-    <RP :text="'hii'" times="3" />
+    <RP :text="'hii'"
+        times="3" />
   </div>
 </template>
 

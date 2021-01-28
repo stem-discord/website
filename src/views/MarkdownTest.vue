@@ -1,7 +1,7 @@
 <template>
-  <MarkdownRender
-    url="https://raw.githubusercontent.com/stem-discord/public/main/STEM_Rules.md"
-  />
+  <MarkdownRender>
+    https://raw.githubusercontent.com/stem-discord/public/main/STEM_Rules.md
+  </MarkdownRender>
 </template>
 
 <script>

@@ -1,29 +1,38 @@
 /* eslint-disable */
 <template>
-  <h1>the url is {{ url }}, content is {{ content }}</h1>
-  <div v-html="compiledMarkdown"></div>
+  <!-- eslint-disable vue/valid-v-html -->
+  <div
+    ref="markdownUrl">
+    <slot/>
+  </div>
 </template>
 
 <script>
-import { ref } from "vue";
-
-const content = ref(``);
-
-fetch(/*fk this for now*/).then((r) =>
-  r.text().then((t) => (content.value = t)),
-);
 
 export default {
-  setup() {
-    const md = ref(``);
-    return {
-      md,
-      content,
-    };
-  },
-  name: `markdown renderer`,
-  props: {
-    url: String,
+  mounted() {
+    // console.log(this.$refs);
+    const o = this.$refs.markdownUrl;
+    const url = o.textContent;
+    o.textContent = `downloading...`;
+    fetch(url).then(async r => {
+      // actually set the parsed md
+      const text = await r.text();
+      const res = await fetch(`https://api.github.com/markdown`, {
+        headers: {
+          'Content-Type': `application/json`,
+        },
+        method: `POST`,
+        body: JSON.stringify({
+          accept: `application/vnd.github.v3+json`,
+          mode: `markdown`,
+          text,
+        }),
+      }).then(r => r.text());
+      o.innerHTML = res;
+    },
+    );
   },
 };
+
 </script>
