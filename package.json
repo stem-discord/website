@@ -18,7 +18,8 @@
     "connect-history-api-fallback": "^1.6.0",
     "ejs": "^3.1.5",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "~4.5.0",

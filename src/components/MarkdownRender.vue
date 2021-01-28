@@ -9,6 +9,12 @@
 </template>
 
 <style>
+
+  * {
+    padding: 15px;
+    font-size: medium;
+  }
+
 	.markdown-body {
 		box-sizing: border-box;
 		min-width: 200px;
@@ -22,6 +28,19 @@
 			padding: 15px;
 		}
 	}
+
+  strong {
+    font-size: large !important;
+  }
+
+  ul li {
+    font-style: italic;
+  }
+
+  ul li ul li /* wtf lmao */ {
+     padding: 15px;
+     font-size: medium; 
+  }
 </style>
 <script>
 export default {
