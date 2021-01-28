@@ -4,8 +4,7 @@
     width="100%"
     height="500"
     allowtransparency="true"
-    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-  ></iframe>
+    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"/>
 </template>
 
 <script>

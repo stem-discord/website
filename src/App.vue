@@ -5,7 +5,8 @@
     <router-link to="/about">About</router-link>
   </div> -->
   <router-view />
-  <FooterSection contact="Contact Me" credits="Owner nope#7777" />
+  <FooterSection contact="Contact Me"
+                 credits="Owner nope#7777" />
 </template>
 
 <script>

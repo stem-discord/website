@@ -1,6 +1,7 @@
 <template>
   <div class="top-nav">
-    <img alt="STEM logo" src="../assets/logo.png" />
+    <img alt="STEM logo"
+         src="../assets/logo.png" />
 
     <div>
       <h1>STEM Helpers & Students</h1>
