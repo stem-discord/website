@@ -17,6 +17,22 @@ make sure to run `npm run build` so vue can build files to `./dist/`
 
 now before u guys go flaming on me on git, i know that json db is bad but i need to make this thing until 29th or smth so please let me use a simple known method that i cant fk up
 
+example of current db
+```json
+{
+  "memes": [
+    {
+      "url": "https://cdn.discordapp.com/attachments/770755423078056016/804450842748649573/unknown.png",
+      "authorId": "341446613056880641",
+      "tags": ["coding"],
+      "upvotes": 0,
+      "downvotes": 0
+    }
+  ]
+}
+
+```
+
 # configuring
 ```env
 HTTP_PORT=80
