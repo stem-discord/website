@@ -10,7 +10,7 @@ module.exports = {
   },
   devServer: {
     port: 8443,
-    https:{
+    https: process.env.PROD ? false : {
       key: fs.readFileSync(`./local/key.pem`),
       cert: fs.readFileSync(`./local/cert.pem`)},
     public: `https://localhost:8443`,
