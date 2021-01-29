@@ -1,4 +1,5 @@
 {
+  "files.eol": "\n",
   "editor.defaultFormatter": "octref.vetur",
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
