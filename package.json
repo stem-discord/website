@@ -19,6 +19,7 @@
     "connect-history-api-fallback": "^1.6.0",
     "connect-mongo": "^3.2.0",
     "connect-mongodb-session": "^2.4.1",
+    "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express-session": "^1.17.1",
