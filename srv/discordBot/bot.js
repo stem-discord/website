@@ -8,6 +8,11 @@ const login = new Promise(r => {
   clientLogin = r;
 });
 
+const {
+  DB_CHANNEL,
+  DISCORD_BOT_TOKEN,
+} = process.env;
+
 function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
@@ -25,13 +30,19 @@ client.on(`message`, async message => {
   // write stuff
 });
 
-async function uploadFile() {
+async function uploadFile(file, name) {
+  if (!file) throw new Error(`file is nullish`);
   await login;
+  return client.channels.cache.get(DB_CHANNEL)
+    .send(new Discord.MessageAttachment(file, name))
+    .then(m => {
+      return m.attachments.first().url;
+    }).catch(e => { throw e;});
 }
-
-if (!process.env.DISCORD_BOT_TOKEN)
-  console.error(`No discord bot token provided`);
-client.login(process.env.DISCORD_BOT_TOKEN).then(clientLogin);
+if (!DB_CHANNEL)
+  if (!DISCORD_BOT_TOKEN)
+    console.error(`No discord bot token provided`);
+client.login(DISCORD_BOT_TOKEN).then(clientLogin);
 
 module.exports = {
   uploadFile,
