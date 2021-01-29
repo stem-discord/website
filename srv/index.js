@@ -16,31 +16,12 @@ require(`dotenv`).config({ path: `../.env` });
 const upload = multer();
 // import socketIO from "socket.io";
 
-// simple db handler
-class JSONFileHandler {
-  constructor(filePath) {
-    this.filePath = filePath;
-    try {
-      this.obj = require(filePath);
-    } catch (error) {
-      console.log(`error reading the json file`, error);
-      this.error = true;
-    }
-  }
-  save() {
-    fs.writeFileSync(this.filePath, JSON.stringify(this.obj, null, ` `), {
-      encoding: `utf8`,
-    });
-  }
-}
-
 // constants
 const MONGO = {
   session: `session`,
   users: `Users`,
 };
 
-const jsonDB = new JSONFileHandler(`${__dirname}/database.json`);
 
 const {
   COOKIE_SECRET = `secret`,
