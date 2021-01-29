@@ -112,7 +112,14 @@ module.exports = (app) => {
     if (!req.query.code) {
       const uri = `${HOST_BASE}/login`;
 
-      res.redirect(`https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(uri)}&response_type=code&scope=${encodeURIComponent(scopes.join(` `))}`);
+      res.redirect(
+        `https://discord.com/api/oauth2/authorize?client_id=${
+          DISCORD_CLIENT_ID
+        }&redirect_uri=${
+          encodeURIComponent(uri)
+        }&response_type=code&scope=${
+          encodeURIComponent(scopes.join(` `))
+        }`);
       return;
     }
     
@@ -181,7 +188,9 @@ module.exports = (app) => {
   // app.set(`views`, `dist`);
   // app.set(`view engine`, `html`);
   
-  // TODO: i was originally going to use views instead of static but for some reason i cant get views to work and the below works just fine idk maybe ill fix it when im better at express or smth
+  // TODO: i was originally going to use views instead of static but for 
+  // some reason i cant get views to work and the below works 
+  // just fine idk maybe ill fix it when im better at express or smth
   app.use(express.static(`dist`));
 
   
