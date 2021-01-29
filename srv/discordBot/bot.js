@@ -17,7 +17,7 @@ const pingEveryoneRoleOption = {
 };
 
 client.on(`message`, async message => {
-	if ()
+  // write stuff
 });
 
 function uploadFile() {
