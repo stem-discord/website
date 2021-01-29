@@ -9,8 +9,9 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "express": "vue-cli-service express:watch",
-    "express:run": "vue-cli-service express:run"
+    "express": "vue-cli-service express:watch --https true",
+    "express:run": "vue-cli-service express:run --https true",
+    "express:prod": "vue-cli-service express:run --https false"
   },
   "dependencies": {
     "@vue/cli": "^4.5.10",
