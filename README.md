@@ -21,7 +21,7 @@ make sure to run `npm run build` so vue can build files to `./dist/`
 
 # database
 
-Good news, we actually use a mongodb. 
+Good news, we actually use a mongodb. bad news, good luck configuring it because im not going to put a whole tutorial on how to set up a mongodb
 
 # configuring
 `/srv`
