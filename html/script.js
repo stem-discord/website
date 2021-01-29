@@ -1,8 +1,9 @@
+/* eslint-disable */
 const title = new Vue({
   el: `#title`,
   data: function() {
     return {
-      header: `STEM Discord`
+      header: `STEM Discord`,
     };
   },
 });
@@ -14,19 +15,19 @@ const sideNav = new Vue({
       links: [
         {
           text: `Home`,
-          destination: `#`
+          destination: `#`,
         },
         {
           text: `Discord`,
-          destination: `https://discord.gg/stem`
+          destination: `https://discord.gg/stem`,
         },
         {
           text: `Server Rules`,
-          destination: `rules.html`
+          destination: `rules.html`,
         },
         {
           text: `About`,
-          destination: `#`
+          destination: `#`,
         },
       ],
     };
@@ -49,7 +50,7 @@ const mainMessage = new Vue({
             `                        learning about any of these subjects or related fields, this\n` +
             `                        server is for you! Feel free to start/join in a discussion in any\n` +
             `                        of our subject-related channels or just chill in any of our\n` +
-            `                        general ones`
+            `                        general ones`,
         },
         {
           subheading: `❯ Getting Started`,
@@ -57,7 +58,7 @@ const mainMessage = new Vue({
             `Head on over to #get-roles to assign yourself some roles\n` +
             `                        ✪ If you're here to ask STEM questions, read #how-to-ask.\n` +
             `                        ✪ Check out the pins 📌 in each channel for subject-related\n` +
-            `                        resources!`
+            `                        resources!`,
         },
         {
           subheading: `❯ Expectations`,
@@ -74,7 +75,7 @@ const mainMessage = new Vue({
             `                        promotions within the server or DMs.\n` +
             `                        \n` +
             `                        You can report misconduct\n` +
-            `                        using #🔕contact-mods.`
+            `                        using #🔕contact-mods.`,
         },
       ],
     };
@@ -86,7 +87,7 @@ const footer = new Vue({
   data: function() {
     return {
       contact: `Contact Me`,
-      credits: `Owner nope#7777`
+      credits: `Owner nope#7777`,
     };
   },
 });
