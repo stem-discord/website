@@ -34,14 +34,19 @@ example of current db
 ```
 
 # configuring
+`/srv`
 ```env
 # these are optional
 HTTP_PORT=80
 HTTPS_PORT=443
-
-DISCORD_CLIENT_SECRET=the discord application token
-DISCORD_BOT_TOKEN=the discord BOT token
 COOKIE_SECRET=secret key. not required for dev server
+DISCORD_CLIENT_SECRET=the discord application token
+MONGODB_URI=mongodb uri. required for dev
+```
+
+`srv/discordBot`
+```env
+DISCORD_BOT_TOKEN=the discord BOT token
 ```
 
 # vue setup
