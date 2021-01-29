@@ -21,23 +21,7 @@ make sure to run `npm run build` so vue can build files to `./dist/`
 
 # database
 
-now before u guys go flaming on me on git, i know that json db is bad but i need to make this thing until 29th or smth so please let me use a simple known method that i cant fk up
-
-example of current db
-```json
-{
-  "memes": [
-    {
-      "url": "https://cdn.discordapp.com/attachments/770755423078056016/804450842748649573/unknown.png",
-      "authorId": "341446613056880641",
-      "tags": ["coding"],
-      "upvotes": 0,
-      "downvotes": 0
-    }
-  ]
-}
-
-```
+Good news, we actually use a mongodb. 
 
 # configuring
 `/srv`
@@ -47,6 +31,7 @@ HTTP_PORT=80
 HTTPS_PORT=443
 COOKIE_SECRET=secret key. not required for dev server
 DISCORD_CLIENT_SECRET=the discord application token
+DISCORD_CLIENT_ID=the id
 MONGODB_URI=mongodb uri. required for dev
 ```
 
