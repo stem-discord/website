@@ -62,9 +62,11 @@ const {
   MemeSchema,
 } = require(`${__dirname}/db`);
 
-const CookieModal = cookieSession.model(MONGO.session, CookieSchema);
-const UserModal = userDb.model(MONGO.users, UserSchema);
-const MemeModal = memeDb.model(MONGO.memes, MemeSchema);
+// finally fixed everything
+// TODO: soft code this
+const CookieModal = cookieSession.model(MONGO.session, CookieSchema, `cookies`);
+const UserModal = userDb.model(MONGO.users, UserSchema, `users`);
+const MemeModal = memeDb.model(MONGO.memes, MemeSchema, `memes`);
 
 // https redirect is done on nginx
 const accessLogStream = fs.createWriteStream(
