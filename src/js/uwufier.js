@@ -1,5 +1,5 @@
 //META{"name":"Autouwu","displayName":"UwU","website":"oop","source":""}*//
-class replacePair {
+class ReplacePair {
   constructor(re, str) {
     this.re = re;
     this.str = str;
@@ -22,31 +22,31 @@ function thisCase(a, b) {
 function uwufier(text) {
   console.log(`original text:\n${text}`);
   const pairs = [
-    new replacePair(/you/gi, m => thisCase(m, `u`)),
-    new replacePair(/thanks/gi, m => thisCase(m, `tnx`)),
-    new replacePair(/like/gi, m => thisCase(m, `lik`)),
-    new replacePair(/ok/gi, m => thisCase(m, `oki`)),
-    new replacePair(/because/gi, m => thisCase(m, `cuz`)),
-    new replacePair(/(?<![a-zA-Z])cry(?![a-zA-Z])/gi, m =>
+    new ReplacePair(/you/gi, m => thisCase(m, `u`)),
+    new ReplacePair(/thanks/gi, m => thisCase(m, `tnx`)),
+    new ReplacePair(/like/gi, m => thisCase(m, `lik`)),
+    new ReplacePair(/ok/gi, m => thisCase(m, `oki`)),
+    new ReplacePair(/because/gi, m => thisCase(m, `cuz`)),
+    new ReplacePair(/(?<![a-zA-Z])cry(?![a-zA-Z])/gi, m =>
       thisCase(m, `cri ` + randomChoice([`;-;`, `😭`, `:c`])),
     ),
-    new replacePair(
+    new ReplacePair(
       /((?![aeiounwy])\w)([aeiou])(?!l)/gi,
       m => m[0] + (Math.random() > 0.5 ? thisCase(m[0], `w`) : ``) + m[1],
     ),
-    new replacePair(/(?<=\w)[rl](?=\w)/gi, m => thisCase(m, `w`)),
-    new replacePair(/is/gi, m =>
+    new ReplacePair(/(?<=\w)[rl](?=\w)/gi, m => thisCase(m, `w`)),
+    new ReplacePair(/is/gi, m =>
       casePreserveReplace(
         m,
         `s`,
         thisCase(m, `z`).repeat(Math.floor(1 + Math.random() * 3)),
       ),
     ),
-    new replacePair(/a(nd)/gi, `$1`),
-    new replacePair(/w+/gi, m => thisCase(m, `w`)),
-    new replacePair(/(h)(i)/gi, `$1$2$2$2$2`),
-    new replacePair(/([a-zA-Z?!~])\s+$/i, `$1$1$1`),
-    new replacePair(/\s+$/i, ``),
+    new ReplacePair(/a(nd)/gi, `$1`),
+    new ReplacePair(/w+/gi, m => thisCase(m, `w`)),
+    new ReplacePair(/(h)(i)/gi, `$1$2$2$2$2`),
+    new ReplacePair(/([a-zA-Z?!~])\s+$/i, `$1$1$1`),
+    new ReplacePair(/\s+$/i, ``),
   ];
   pairs.forEach(rp => {
     text = text.replace(rp.re, rp.str);
