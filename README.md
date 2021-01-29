@@ -1,4 +1,9 @@
-# Branch is pretty stable. Just do npm install and everything should work pretty fine. Make sure you have vue cli installed
+# Branch is pretty stable. Just do npm install and everything should work pretty fine. **Make sure you have vue cli installed**
+
+# quick start and help with front end
+
+do `npm run serve` and vue cli will launch a front end hot reload server. its pretty much out of the box.  
+if you want to do some fancy stuff, read below
 
 # node
 
