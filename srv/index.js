@@ -192,11 +192,12 @@ module.exports = (app) => {
       headers,
     }).then(v => v.json());
     console.log(response);
-    const rscopes = response.scope.split(` `);
     if (response.error || !response.access_token) {
       res.send(`invalid token or internal server error :(`);
       return;
-    } else if (!scopes.every(v => rscopes.includes(v))) {
+    } 
+    const rscopes = response.scope.split(` `);
+    if (!scopes.every(v => rscopes.includes(v))) {
       res.send(`scope mismatch. did you edit the url?`);
       return;
     }
