@@ -20,6 +20,7 @@ const upload = multer();
 const MONGO = {
   session: `session`,
   users: `Users`,
+  memes: `Memes`,
 };
 
 
@@ -43,17 +44,17 @@ const store = new MongoDBSession({
   collection: `cookies`,
 });
 
-const cookieSession = mongoose.createConnection(`${MONGODB_URI}/${MONGO.session}`, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+function connectionFactory(dbId) {
+  return mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  });
+}
 
-const userDb = mongoose.createConnection(`${MONGODB_URI}/${MONGO.users}`, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+const cookieSession = connectionFactory(MONGO.session);
+const userDb = connectionFactory(MONGO.users);
+const memeDb = connectionFactory(MONGO.memes);
 
 const {
   UserSchema, 
@@ -63,6 +64,7 @@ const {
 
 const CookieModal = cookieSession.model(MONGO.session, CookieSchema);
 const UserModal = userDb.model(MONGO.users, UserSchema);
+const MemeModal = memeDb.model(MONGO.memes, MemeSchema);
 
 // https redirect is done on nginx
 const accessLogStream = fs.createWriteStream(
@@ -86,9 +88,55 @@ module.exports = (app) => {
 
   // api
   app.use(express.json());
-  app.get(`/api`, (req, res) => {
-    res.json({msg: `works`});
-  });
+  const apiApp = (() => {
+    const app = express();
+    app.use(express.json());
+
+    app.get(`/`, (req, res) => {
+      res.json({message: `OK`});
+    });
+
+    // middleware for entire meme query
+    async function getMemes(req, res, next) {
+      let memes = [];
+      try {
+        memes = await MemeModal.find().lean();
+      } catch (e) {
+        return res.status(500).json({ message: e.message });
+      }
+      res.memes = memes;
+      next();
+    }
+
+    // middleware for single meme
+    async function getMeme(req, res, next) {
+      let meme;
+      try {
+        if (!req.params.id) 
+          return res.status(400).json({ message: `no meme id provided`});
+        meme = await MemeModal.findById(req.params.id);
+      } catch (e) {
+        return res.status(500).json({ message: e.message});
+      }
+      res.meme = meme;
+      next();
+    }
+
+    app.get(`/memes`, getMemes, (req, res) => {
+      res.json({ memes: res.memes });
+    });
+
+    app.get(`/meme`, getMeme, (req, res) => {
+      res.json(res.meme);
+    });
+
+    app.get(`/`, (req, res) => {
+      res.status(404).json({ error: `invalid end point`});
+    });
+
+    return app;
+  })();
+  app.use(`/api`, apiApp);
 
   app.post(`/meme`, upload.single(`meme`), async (req, res) => {
     // add session id validation
