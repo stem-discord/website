@@ -11,6 +11,7 @@ const discordBot = require(`${__dirname}/discordBot/bot.js`);
 const fetch = require(`node-fetch`);
 require(`dotenv`).config({ path: `../.env` });
 
+console.log(`running node ${process.version}`);
 
 // TODO: add db for storage object here
 const upload = multer();
