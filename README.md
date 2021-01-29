@@ -35,10 +35,14 @@ example of current db
 
 # configuring
 ```env
+# these are optional
 HTTP_PORT=80
 HTTPS_PORT=443
+
 DISCORD_CLIENT_SECRET=the discord application token
-DISCORD_BOT_TOKEN=the discord BOT token```
+DISCORD_BOT_TOKEN=the discord BOT token
+COOKIE_SECRET=secret key. not required for dev server
+```
 
 # vue setup
 
