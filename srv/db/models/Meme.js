@@ -6,7 +6,6 @@ const memeSchema = new Schema({
   },
   url: {
     type: String,
-    default: 0,
   },
   upvotes: {
     type: Number,
