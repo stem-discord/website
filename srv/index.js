@@ -102,6 +102,14 @@ module.exports = (app) => {
     async function getMemes(req, res, next) {
       let memes = [];
       try {
+        // FIXME: this
+        const { 
+          ownerId,
+        } = req.query;
+        // const newMeme = new MemeModal({
+        //   ownerId: `341446613056880641`,
+        // });
+        // await newMeme.save();
         memes = await MemeModal.find().lean();
       } catch (e) {
         return res.status(500).json({ message: e.message });
@@ -128,13 +136,30 @@ module.exports = (app) => {
       res.json({ memes: res.memes });
     });
 
-    app.get(`/meme`, getMeme, (req, res) => {
+    app.get(`/meme/:id`, getMeme, (req, res) => {
       res.json(res.meme);
     });
 
     app.get(`/`, (req, res) => {
       res.status(404).json({ error: `invalid end point`});
     });
+
+    if (!process.env.PROD) {
+      app.post(`/media`, upload.single(`file`), async (req, res) => {
+        try {
+          // console.log(req.file);
+          const url = await discordBot.uploadFile(
+            req.file.buffer,
+            req.file.originalname,
+          );
+          console.log(url);
+          res.status(201).json({message: `OK`});
+        } catch (e) {
+          res.status(500).json({message: e.message});
+        }
+        return;
+      });
+    }
 
     return app;
   })();
@@ -143,7 +168,8 @@ module.exports = (app) => {
   app.post(`/meme`, upload.single(`meme`), async (req, res) => {
     // add session id validation
     // post it to a discord database channel and retrieve url
-    const url = await discordBot.upload();
+    const url = await discordBot.uploadFile();
+    // add to db
   });
 
   // discord login
