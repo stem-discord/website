@@ -49,13 +49,20 @@ export default {
           // adding this doesnt work
           // 'Content-Type': 'multipart/form-data'
         }
-      }).catch(console.error)
+      }).catch(e => {
+        if (e.code === 500) {
+          errorMessage = "something went wrong server side. please report what went wrong"
+        } else {
+          errorMessage = e.message;
+        }
+      })
 
       console.log(responseData)
     }
     return {
       sendMeme,
       sendingMeme,
+      errorMessage
     };
   },
   mounted() {
