@@ -1,5 +1,8 @@
 <template>
   <div class="form-wrapper">
+    <div class="meme-form-error">
+      <h2>You have an error...</h2>
+    </div>
     <form>
       <h1>Meme Form</h1>
       <span>
@@ -35,17 +38,28 @@ export default {
     width: 100%;
     margin: 2rem 0;
     display: flex;
+    flex-direction: column;
     align-content: center;
     justify-content: center;
-    form{
+
+    .meme-form-error, form{
       display: flex;
       flex-direction: column;
       align-items: stretch;
       justify-content: space-between;
       padding: 2rem;
-      background: #00000000;
       border-radius: 2rem;
       box-shadow: 0 0 2rem #00000041;
+      width: 36rem;
+      margin: 0 auto;
+    }
+    .meme-form-error{
+      background-color: tomato;
+      margin-bottom: 3rem;
+      // display: none; (toggle between none and flex)
+    }
+    form{
+      background: #00000000;
 
       h1{
         font-size: 3rem;
