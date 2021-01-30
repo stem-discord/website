@@ -242,10 +242,8 @@ module.exports = (app) => {
       let q = await UserModal.findOne({ sessionId: req.session.id});
       if (!q) {
         // user doesnt exist
-        if (q.discordId) {
-          res.redirect(`/login`);
-          return;
-        }
+        res.redirect(`/login`);
+        return;
       }
       // console.log(req.body);
       // console.log(req.files);
@@ -259,10 +257,10 @@ module.exports = (app) => {
       } */
       // example file response
       if (!req.body[`meme-title`]) {
-        return res.status(413).json({ message: `meme title is missing!` });
+        return res.status(400).json({ message: `meme title is missing!` });
       }
       if (!req.files[`meme`]) {
-        return res.status(413).json({ message: `meme image is missing!` });
+        return res.status(400).json({ message: `meme image is missing!` });
       }
       let url;
       try {
