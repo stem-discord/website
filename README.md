@@ -43,6 +43,7 @@ MONGODB_URI=mongodb uri. required for dev
 `srv/discordBot`
 ```env
 DISCORD_BOT_TOKEN=the discord BOT token
+DB_CHANNEL=channel id where media gets uploaded
 ```
 
 # vue setup
