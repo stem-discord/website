@@ -34,7 +34,7 @@ async function uploadFile(file, name, options) {
   if (!file) throw new Error(`file is nullish`);
   await login;
   const fileArgs = [];
-  const { message, ping } = options;
+  const { message = undefined, ping = undefined } = options ?? {};
   if (message) fileArgs.push(message);
   fileArgs.push(
     { 
