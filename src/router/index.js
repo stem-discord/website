@@ -49,9 +49,23 @@ const routes = [
   },
 ];
 
+// https://router.vuejs.org/guide/advanced/scroll-behavior.html
+function scrollBehavior (to, from, savedPosition) {
+  if (savedPosition) {
+    return savedPosition;
+  }
+  if (to.hash) {
+    const item = document.querySelector(`a[href="${to.hash}"]`);
+    if (item) {
+      item.scrollIntoView();
+    }
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior,
 });
 
 export default router;

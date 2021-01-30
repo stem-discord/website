@@ -16,7 +16,12 @@ module.exports = {
     strict: 0,
     "comma-dangle": [`error`, `always-multiline`],
     "space-infix-ops": [`error`, { int32Hint: false }],
-    "max-len": [`error`, { code: 80}],
+    "max-len": [`error`, { 
+      code: 80,
+      ignoreUrls: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: false,
+    }],
     "require-jsdoc": [`off`],
     "new-cap": [`error`, { newIsCap: true}],
     'vue/html-indent': [

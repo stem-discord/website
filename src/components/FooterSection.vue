@@ -1,7 +1,8 @@
 a<template>
   <footer>
     <div>
-      <!-- i dont think its a good idea to inject simple stuff, but lets try it -->
+      <!-- i dont think its a good idea to inject simple stuff, 
+      but lets try it -->
       <h1>{{ contact }}</h1>
       <p>{{ credits }}</p>
     </div>
