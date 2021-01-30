@@ -13,6 +13,7 @@
              name="meme"
              accept="image/png, image/jpeg" />
       <button>Send</button>
+      <h2>Submitting...</h2>
     </form>
   </div>
 </template>
@@ -89,7 +90,25 @@ export default {
       button:hover{
         box-shadow: 0 0 1rem #00000041;
       }
+      h2{
+        display: none;
+      }
     }
   }
-  
+  .submitting{
+    position: relative;
+    h1, span, input, button{
+      opacity: 0;
+      pointer-events: none;
+    }
+    h2{
+      display: block !important;
+      color: rgb(84, 84, 84);
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 </style>
