@@ -1,7 +1,9 @@
 <template>
   <div class="form-wrapper">
-    <form class="meme-form">
-      <h1>Meme Form</h1>
+    <form @submit.prevent
+          class="meme-form"
+          ref="form">
+      <h1>{{ sendingMeme ? "Uploading..." : "Meme Form" }}</h1>
       <span class="meme-title-input">
         <input type="text" 
                name="meme-title"
@@ -12,14 +14,48 @@
              id="meme"
              name="meme"
              accept="image/png, image/jpeg" />
-      <button>Send</button>
+      <button @click="sendMeme()">Send</button>
     </form>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
+import { ref, onMounted } from 'vue';
+import fetch from 'node-fetch';
+import router from '../router';
+import { sleep } from '../asyncUtils';
+
+const sendingMeme = ref(false);
+const form = ref(null);
+
 export default {
-	
+  setup() {
+    async function sendMeme() {
+      if (!form.value) return;
+      sendingMeme.value = true;
+      console.log(form.value)
+      console.log(window.location.href)
+      const fd = new FormData(form.value);
+      const responseData = await fetch(window.location.href, {
+        method: 'POST',
+        body: fd,
+        headers: {
+          // adding this doesnt work
+          // 'Content-Type': 'multipart/form-data'
+        }
+      }).catch(console.error)
+
+      console.log(responseData)
+    }
+    return {
+      sendMeme,
+      sendingMeme,
+    };
+  },
+  mounted() {
+    form.value = this.$refs.form;
+  }
 };
 </script>
 
