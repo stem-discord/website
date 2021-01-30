@@ -9,13 +9,50 @@ const mongoose = require(`mongoose`);
 const MongoDBSession = require(`connect-mongodb-session`)(session);
 const discordBot = require(`${__dirname}/discordBot/bot.js`);
 const fetch = require(`node-fetch`);
+const getRawBody = require(`raw-body`);
+const contentType = require(`content-type`);
+
 require(`dotenv`).config({ path: `../.env` });
 
 console.log(`running node ${process.version}`);
 
+const imageUploadOptions = {
+  limits: {
+    fileSize: 10 * 1024 * 1024,
+  },
+  //https://stackoverflow.com/questions/35050071/cant-get-multer-filefilter-error-handling-to-work
+  //https://github.com/expressjs/multer
+  // TODO: cant get this shit to work with other stuff
+  // fileFilter: function (req, file, cb) {
+  //   console.log(`called`);
+  //   try {
+  //     if (!file.mimeType) {
+  //       return cb(null, false,
+  //         new Error(`mimeType not provided what how does this even happen`));
+  //     } 
+  //     if (!file.mimetype.startsWith(`image`)) {
+  //       return req.res.status(400)
+  //         .json({ message: `not an image`});
+  //     }
+  //     // doesnt work
+  //     // if (file.size > 10 * 1024 * 1024) {
+  //     //   // reject file
+  //     //   return cb(null, false, new Error(`file is too big`));
+  //     // }
+  //   } catch (e) {
+  //     console.error(e);
+  //     return req.res.status(500).json({ message: `internal server error` });
+  //   }
+  // },
+};
+
 // TODO: add db for storage object here
-const upload = multer();
+// https://github.com/stream-utils/raw-body
+// apparently, having a global limit sounds good
+const imageUpload = multer(imageUploadOptions);
 // import socketIO from "socket.io";
+
+const upload = multer();
 
 // constants
 const MONGO = {
@@ -89,6 +126,30 @@ module.exports = (app) => {
   // logs
   app.use(morgan(`combined`, { stream: accessLogStream }));
 
+  // TODO use this somewhere else
+  // validate filesize
+  // https://github.com/stream-utils/raw-body#simple-express-example
+  // this was the only thing that worked tbh
+  // app.post(`*`, (req, res, next) => {
+  //   if (!req.headers[`content-type`]) {
+  //     return res.status(500).json({ message: `content-type is missing`});
+  //   }
+  //   getRawBody(req, {
+  //     length: req.headers[`content-length`],
+  //     limit: `10mb`,
+  //     encoding: contentType.parse(req).parameters.charset,
+  //   }).then().catch(e => {
+  //     if (e.type === `entity.too.large`) {
+  //       const ip = 
+  //       req.headers[`x-forwarded-for`] || req.connection.remoteAddress;
+  //       console.log(`${ip} attempted to send a file over the limit`);
+  //       return res.status(500).json({ message: `entity too large` });
+  //     }
+  //   }).finally(() => {
+  //     next();
+  //   });
+  // });
+
   // api
   app.use(express.json());
   const apiApp = (() => {
@@ -106,12 +167,13 @@ module.exports = (app) => {
         // FIXME: this
         const { 
           ownerId,
+          memeId,
         } = req.query;
         // const newMeme = new MemeModal({
         //   ownerId: `341446613056880641`,
         // });
         // await newMeme.save();
-        memes = await MemeModal.find().lean();
+        memes = await MemeModal.find({ownerId, _id: memeId}).lean();
       } catch (e) {
         return res.status(500).json({ message: e.message });
       }
@@ -149,9 +211,9 @@ module.exports = (app) => {
     });
 
     if (!process.env.PROD) {
-      app.post(`/media`, upload.single(`file`), async (req, res) => {
+      app.post(`/media`, imageUpload.single(`file`), async (req, res) => {
         try {
-          // console.log(req.file);
+          console.log(req.file);
           const url = await discordBot.uploadFile(
             req.file.buffer,
             req.file.originalname,
@@ -169,12 +231,66 @@ module.exports = (app) => {
   })();
   app.use(`/api`, apiApp);
 
-  app.post(`/meme`, upload.single(`meme`), async (req, res) => {
-    // add session id validation
-    // post it to a discord database channel and retrieve url
-    const url = await discordBot.uploadFile();
-    // add to db
-  });
+  app.post(`/meme`, 
+    upload.fields(
+      [{ name: `meme-title`, maxCount: 1}, { name: `meme`, maxCount: 1}],
+    ), 
+    async (req, res) => {
+      // add session id validation
+      // post it to a discord database channel and retrieve url
+      
+      let q = await UserModal.findOne({ sessionId: req.session.id});
+      if (!q) {
+        // user doesnt exist
+        if (q.discordId) {
+          res.redirect(`/login`);
+          return;
+        }
+      }
+      // console.log(req.body);
+      // console.log(req.files);
+      /**{
+        fieldname: 'meme',
+        originalname: 'kill me.jpg',
+        encoding: '7bit',
+        mimetype: 'image/jpeg',
+        buffer: <Buffer ...>,
+        size: 10135
+      } */
+      // example file response
+      if (!req.body[`meme-title`]) {
+        return res.status(413).json({ message: `meme title is missing!` });
+      }
+      if (!req.files[`meme`]) {
+        return res.status(413).json({ message: `meme image is missing!` });
+      }
+      let url;
+      try {
+        let title = req.body[`meme-title`];
+        // if file doesnt have extension
+        if (!title.match(/\.\S+$/)) {
+          // add the original extension
+          title += req.files[`meme`][0].originalname.match(/\.\S+/)[0];
+        }
+        const message = `${
+          q.discordUserObj.username
+        } <@${
+          q.discordUserObj.id
+        }> sent this via form submission`;
+        url = await discordBot.uploadFile(
+          req.files[`meme`][0].buffer, 
+          title,
+          {
+            message,
+            ping: true,
+          },
+        );
+      } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: `internal server error` });
+      } 
+      res.status(200).json({message: `OK`});
+    });
 
   // discord login
   app.get(`/login`, async (req, res, next) => {
