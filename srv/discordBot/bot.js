@@ -30,11 +30,19 @@ client.on(`message`, async message => {
   // write stuff
 });
 
-async function uploadFile(file, name) {
+async function uploadFile(file, name, options) {
   if (!file) throw new Error(`file is nullish`);
   await login;
+  const fileArgs = [];
+  const { message, ping } = options;
+  if (message) fileArgs.push(message);
+  fileArgs.push(
+    { 
+      disableMentions: ping ? `none` : undefined,
+      files: [new Discord.MessageAttachment(file, name)],
+    });
   return client.channels.cache.get(DB_CHANNEL)
-    .send(new Discord.MessageAttachment(file, name))
+    .send(...fileArgs)
     .then(m => {
       return m.attachments.first().url;
     }).catch(e => { throw e;});
