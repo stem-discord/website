@@ -1,13 +1,16 @@
 <template>
-  <div class="form-wrapper">
+  <div class="form-wrapper"
+       :class="{ submitting: sendingMeme }">
     <div class="meme-form-error"
-         :display="{ none: !errorMessage }">
-      <h2>You have an error...</h2>
+         v-if="errorMessage">
+      <h2>{{ errorMessage }}</h2>
     </div>
     <form @submit.prevent
           class="meme-form"
           ref="form">
-      <h1>{{ sendingMeme ? "Uploading..." : "Meme Form" }}</h1>
+      <h1 style="opacity:100%;">
+        {{ sendingMeme ? "Uploading..." : "Meme Form" }}
+      </h1>
       <span>
         <input type="text" 
                name="meme-title"
@@ -28,36 +31,47 @@
 import { ref, onMounted } from 'vue';
 import fetch from 'node-fetch';
 import router from '../router';
-import { sleep } from '../asyncUtils';
 
 const sendingMeme = ref(false);
 const form = ref(null);
-let errorMessage;
+let errorMessage = ref();
 
 export default {
   setup() {
     async function sendMeme() {
       if (!form.value) return;
+      console.log("sending...")
       sendingMeme.value = true;
-      console.log(form.value)
-      console.log(window.location.href)
       const fd = new FormData(form.value);
-      const responseData = await fetch(window.location.href, {
-        method: 'POST',
-        body: fd,
-        headers: {
-          // adding this doesnt work
-          // 'Content-Type': 'multipart/form-data'
-        }
-      }).catch(e => {
-        if (e.code === 500) {
-          errorMessage = "something went wrong server side. please report what went wrong"
+      try {
+        await fetch(window.location.href, {
+          method: 'POST',
+          body: fd,
+          headers: {
+            // adding this doesnt work
+            // 'Content-Type': 'multipart/form-data'
+          }
+        }).then(r => {
+          if (r.status >= 400) {
+            console.log(r);
+            console.log("error");
+            errorMessage.value = `something went wrong; no detail provided`;
+          } else {
+            console.log("success");
+            alert("your meme has been submitted!");
+            form.value.reset();
+          }
+        })
+      } catch (e) {
+        console.log(e)
+        if (e.status === 500) {
+          errorMessage.value = "internal server error"
         } else {
-          errorMessage = e.message;
+          errorMessage.value = e.statusText
         }
-      })
-
-      console.log(responseData)
+      } finally {
+        sendingMeme.value = false;
+      }
     }
     return {
       sendMeme,
