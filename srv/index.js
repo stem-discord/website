@@ -268,7 +268,8 @@ module.exports = (app) => {
         // if file doesnt have extension
         if (!title.match(/\.\S+$/)) {
           // add the original extension
-          title += req.files[`meme`][0].originalname.match(/\.\S+/)[0];
+          const m = req.files[`meme`][0].originalname.match(/\.\S+/);
+          title += m ? m[0] : `.png`;
         }
         const message = `${
           q.discordUserObj.username
