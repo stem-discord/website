@@ -26,6 +26,5 @@ export default {
 </script>
 
 <style lang="scss">
-// @import './assets/global.scss'; // for outdate sass :wat:
 @use '@/assets/global.scss';
 </style>
