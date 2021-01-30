@@ -6,6 +6,10 @@ if you dont have key and cert, go to `vue.config.js` and set https to false.
 do `npm run serve` and vue cli will launch a front end hot reload server. its pretty much out of the box.  
 if you want to do some fancy stuff, read below
 
+# im bored what do i do?
+
+ctrl+f -> all documents -> "TODO" and "FIXME"
+
 # node
 
 uses `v15.5.0`. all other module dependencies only work with `v15`. if you project doesn't work just delete `node_modules` and abuse npm
