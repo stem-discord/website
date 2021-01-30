@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <router-link to="/login">Login</router-link>
+    <a href="/login">Login</a>
     <router-link to="/meme">Meme contest</router-link>
   </div>
 </template>
