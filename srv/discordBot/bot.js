@@ -50,7 +50,11 @@ async function uploadFile(file, name, options) {
 if (!DB_CHANNEL)
   if (!DISCORD_BOT_TOKEN)
     console.error(`No discord bot token provided`);
-client.login(DISCORD_BOT_TOKEN).then(clientLogin);
+client.login(DISCORD_BOT_TOKEN)
+  .then(() => {
+    clientLogin(); 
+    console.log(`logged in as ${client.user.username}`);
+  });
 
 module.exports = {
   uploadFile,
