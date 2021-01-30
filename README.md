@@ -33,6 +33,7 @@ Good news, we actually use a mongodb. bad news, good luck configuring it because
 # these are optional
 HTTP_PORT=80
 HTTPS_PORT=443
+HOST_BASE=http://localhost:3000
 COOKIE_SECRET=secret key. not required for dev server
 DISCORD_CLIENT_SECRET=the discord application token
 DISCORD_CLIENT_ID=the id
