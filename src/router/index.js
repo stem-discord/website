@@ -49,9 +49,20 @@ const routes = [
   },
 ];
 
+// https://router.vuejs.org/guide/advanced/scroll-behavior.html
+function scrollBehavior (to/*, from, savedPosition*/) {
+  if (to.hash) {
+    return {
+      selector: to.hash,
+      // , offset: { x: 0, y: 10 }
+    };
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior,
 });
 
 export default router;
