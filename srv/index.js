@@ -359,19 +359,25 @@ module.exports = (app) => {
       const q = await UserModal.findOne({
         discordId: userInfo.id,
       });
-      const newUser = new UserModal({
-        discordId: userInfo.id,
-        discordUserObj: userInfo,
-        accessToken,
-        sessionId: req.session.id,
-      });
-      newUser.save();
+     
       if (q === null) {
         // new user
+        const newUser = new UserModal({
+          discordId: userInfo.id,
+          discordUserObj: userInfo,
+          accessToken,
+          sessionId: req.session.id,
+        });
+        newUser.save();
         console.log(`new user`);
       } else {
         // returning user
-        console.log(`this user exists`);
+        // update their information
+        q.discordUserObj = userInfo;
+        q.accessToken = accessToken,
+        q.sessionId = req.session.id;
+        await q.save();
+        console.log(`this user exists updated session information`);
       }
     });
     // redirect to home
