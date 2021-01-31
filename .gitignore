@@ -2,6 +2,7 @@
 node_modules
 /dist
 /local
+/dump
 
 # database
 database.json
