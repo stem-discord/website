@@ -242,7 +242,7 @@ module.exports = (app) => {
       let q = await UserModal.findOne({ sessionId: req.session.id});
       if (!q) {
         // user doesnt exist
-        res.redirect(`/login`);
+        res.status(400).json({ message: `login required go to /login` });
         return;
       }
       // console.log(req.body);
