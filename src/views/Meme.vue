@@ -51,11 +51,12 @@ export default {
             // adding this doesnt work
             // 'Content-Type': 'multipart/form-data'
           }
-        }).then(r => {
+        }).then(async r => {
+          const jbody = await r.json();
+          console.log(jbody);
           if (r.status >= 400) {
-            console.log(r);
             console.log("error");
-            errorMessage.value = `something went wrong; no detail provided`;
+            errorMessage.value = jbody.message;
           } else {
             console.log("success");
             alert("your meme has been submitted!");
