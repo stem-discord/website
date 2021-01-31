@@ -1,6 +1,7 @@
 <template>
   <div class="top-nav">
-    <img alt="STEM logo"
+    <img class="stem-icon"
+         alt="STEM logo"
          src="../assets/logo.png" />
 
     <div>
@@ -33,7 +34,7 @@ export default {
   align-items: center;
   user-select: none;
 }
-img {
+.stem-icon {
   padding: 2rem;
   height: 100%;
   width: auto;
@@ -41,6 +42,7 @@ img {
   max-width: 100%;
 }
 #login-button {
+  height: 6rem;
   background-color: #fbe9e6;
   display: flex;
   flex-direction: row;
@@ -49,6 +51,7 @@ img {
   padding: 5px 10px;
 }
 #login {
+  height: 6rem;
   width: 200px;
   margin-left: auto;
   margin-right: 10px;
@@ -58,8 +61,9 @@ img {
   transition-duration: 250ms;
 }
 #avatar {
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
-  background-color: black;
   margin-right: 10px;
 }
 </style>
