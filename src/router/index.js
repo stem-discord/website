@@ -34,6 +34,11 @@ const routes = [
     component: () => import(`../views/Meme.vue`),
   },
   {
+    path: `/view-memes`,
+    name: `look at these memes`,
+    component: () => import(`../views/MemeViewing.vue`),
+  },
+  {
     path: `/404`,
     name: `explicit 404`,
     component: function() {
