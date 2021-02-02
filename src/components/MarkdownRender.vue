@@ -82,11 +82,17 @@ export default {
     font-style: italic;
   } */
   details{
+    padding: 0.2rem 6rem;
+  }
+  details summary{
+    background-color: rgba(0,0,0,0.2);
+    margin: 0.2rem -6rem;
     padding: 0.2rem 2rem;
+    border-radius: 1rem;
   }
 
   /* ul li ul li {
-     padding: 15px;
+     padding: 2rem;
      font-size: medium; 
   } */
 </style>
