@@ -54,33 +54,43 @@ export default {
 
 </script>
 
-<style scoped>
-*{
-  font-size: 2rem;
-}
+<style lang="scss" scoped>
+  *{
+    font-size: 2rem !important;
+  }
 </style>
-<style>
+<style lang="scss">
+  .markdown-body h1 strong{
+    color: var(--main-alpha);
+  }
 	.markdown-body {
 		box-sizing: border-box;
 		min-width: 200px;
 		max-width: 980px;
 		margin: 0 auto;
-		padding: 45px 0;
+    padding: 45px 0;
+      ul:first-of-type{
+        padding: 2rem;
+        li a{
+          transition: all 0.2s ease;
+        }
+        li a:hover{
+          color: var(--main-alpha);
+        }
+      }
 	}
 
 	@media (max-width: 767px) {
 		.markdown-body {
-			padding: 15px;
+      padding: 15px;
 		}
-	}
+  }
+	@media (max-width: 1080px) {
+		.markdown-body {
+      padding: 20px;
+		}
+  }
 
-  /* strong {
-    font-size: large !important;
-  } */
-
-  /* ul li {
-    font-style: italic;
-  } */
   details{
     padding: 0.2rem 6rem;
   }
