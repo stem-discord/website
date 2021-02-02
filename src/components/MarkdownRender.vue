@@ -54,13 +54,18 @@ export default {
 
 </script>
 
+<style scoped>
+*{
+  font-size: 2rem;
+}
+</style>
 <style>
 	.markdown-body {
 		box-sizing: border-box;
 		min-width: 200px;
 		max-width: 980px;
 		margin: 0 auto;
-		padding: 45px;
+		padding: 45px 0;
 	}
 
 	@media (max-width: 767px) {
@@ -69,16 +74,19 @@ export default {
 		}
 	}
 
-  strong {
+  /* strong {
     font-size: large !important;
-  }
+  } */
 
-  ul li {
+  /* ul li {
     font-style: italic;
+  } */
+  details{
+    padding: 0.2rem 2rem;
   }
 
-  ul li ul li /* wtf lmao */ {
+  /* ul li ul li {
      padding: 15px;
      font-size: medium; 
-  }
+  } */
 </style>
