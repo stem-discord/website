@@ -111,12 +111,17 @@ export default {
 	}
   .markdown-body ul:first-of-type{
     padding: 2rem;
+    list-style: none;
     li a{
       transition: all 0.2s ease;
     }
     li a:hover{
       color: var(--main-alpha);
     }
+  }
+
+  .markdown-body details ul:first-of-type{
+    list-style: initial !important;
   }
 
   .markdown-body ul{
