@@ -8,17 +8,17 @@ module.exports = {
       return args;
     });
   },
-  devServer: {
-    port: 3000,
-    https: process.env.PROD ? false : {
-      key: fs.readFileSync(`./local/key.pem`),
-      cert: fs.readFileSync(`./local/cert.pem`)},
-    public: `https://localhost:3000`,
-  },
-  pluginOptions: {
-    express: {
-      shouldServeApp: true,
-      serverDir: `./srv`,
-    },
-  },
+  // devServer: {
+  //   port: 3000,
+  //   https: process.env.PROD ? false : {
+  //     key: fs.readFileSync(`./local/key.pem`),
+  //     cert: fs.readFileSync(`./local/cert.pem`)},
+  //   public: `https://localhost:3000`,
+  // },
+  // pluginOptions: {
+  //   express: {
+  //     shouldServeApp: true,
+  //     serverDir: `./srv`,
+  //   },
+  // },
 };
