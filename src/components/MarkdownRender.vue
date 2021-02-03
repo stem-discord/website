@@ -39,7 +39,7 @@ export default {
       headingFilter();
     })();
 
-    // Retrieve localStorage parsedText - for testing
+    // // Retrieve localStorage parsedText - for testing
     // const parsedText = localStorage.getItem(`Rendered-Markdown`);
     // o.innerHTML = parsedText;
 
@@ -96,6 +96,18 @@ export default {
 		max-width: 980px;
 		margin: 0 auto;
     padding: 45px 0;
+    blockquote{
+      margin-top: 2rem;
+      background-color: rgba(0,0,0,0.05);
+      padding: 0.6rem 1rem;
+      border-left: solid 2px #6c6c6c;
+      padding-left: 1rem;
+    }
+    h2{
+      border-bottom: solid 1px #a0a0a0;
+      padding-bottom: 1rem;
+      margin-bottom: 3.2rem;
+    }
 	}
   .markdown-body ul:first-of-type{
     padding: 2rem;
@@ -107,16 +119,11 @@ export default {
     }
   }
 
-	@media (max-width: 767px) {
-		.markdown-body {
-      padding: 15px;
-		}
+  .markdown-body ul{
+    list-style-type: initial;
+    padding-left: 3rem;
   }
-	@media (max-width: 1080px) {
-		.markdown-body {
-      padding: 20px;
-		}
-  }
+
 
   details{
     padding: 0.2rem 6rem;
@@ -128,10 +135,22 @@ export default {
     border-radius: 1rem;
   }
   details ul{
-    padding: 0 !important;
+    padding: 2rem 3rem !important;
   }
-  /* ul li ul li {
-     padding: 2rem;
-     font-size: medium; 
-  } */
+  details ol{
+    padding-left: 3rem;
+  }
+  details ol ol{
+    font-size: 1.4rem;
+  }
+  @media (max-width: 767px) {
+		.markdown-body {
+      padding: 15px;
+		}
+  }
+	@media (max-width: 1080px) {
+		.markdown-body {
+      padding: 20px;
+		}
+  }
 </style>
