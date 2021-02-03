@@ -54,6 +54,7 @@ export default {
         subHeading.removeChild(c[2]);
       });
     };
+    // headingFilter();
 
     // fetch(url).then(async r => {
     //   // actually set the parsed md
@@ -95,16 +96,16 @@ export default {
 		max-width: 980px;
 		margin: 0 auto;
     padding: 45px 0;
-      ul:first-of-type{
-        padding: 2rem;
-        li a{
-          transition: all 0.2s ease;
-        }
-        li a:hover{
-          color: var(--main-alpha);
-        }
-      }
 	}
+  .markdown-body ul:first-of-type{
+    padding: 2rem;
+    li a{
+      transition: all 0.2s ease;
+    }
+    li a:hover{
+      color: var(--main-alpha);
+    }
+  }
 
 	@media (max-width: 767px) {
 		.markdown-body {
@@ -126,7 +127,9 @@ export default {
     padding: 0.2rem 2rem;
     border-radius: 1rem;
   }
-
+  details ul{
+    padding: 0 !important;
+  }
   /* ul li ul li {
      padding: 2rem;
      font-size: medium; 
