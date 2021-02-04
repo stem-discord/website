@@ -36,25 +36,12 @@ export default {
       // localStorage.setItem(`Rendered-Markdown`, parsedText); 
       /*  Set the Parsed text to local Storage to 
        *    avoid making multiple API Requests    */
-      headingFilter();
     })();
 
     // // Retrieve localStorage parsedText - for testing
     // const parsedText = localStorage.getItem(`Rendered-Markdown`);
     // o.innerHTML = parsedText;
 
-
-    // Removing |== ==| 
-    const headingFilter = () => {
-      const subHeadings = document.querySelectorAll(`.markdown-body h2`);
-      console.log(subHeadings);
-      subHeadings.forEach(subHeading => {
-        let c = subHeading.childNodes;
-        subHeading.removeChild(c[4]);
-        subHeading.removeChild(c[2]);
-      });
-    };
-    // headingFilter();
 
     // fetch(url).then(async r => {
     //   // actually set the parsed md
