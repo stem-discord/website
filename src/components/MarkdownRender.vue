@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <!-- eslint-disable vue/valid-v-html -->
   <div
@@ -9,71 +8,82 @@
 </template>
 
 <script>
+/* eslint-disable */
+import "moment";
+import { ref } from "vue" 
+
+const timestamp = ref(null);
+const timestampString = ref(null);
+
+// this is probably a bad idea
+
 export default {
   mounted() {
     // console.log(this.$refs);
     const o = this.$refs.markdownUrl;
     const url = o.textContent;
-    o.textContent = `downloading...`;
+    const webCache = `webContentCache:${url}`;
+    const webCacheTimestamp = `webContentCacheTimestamp:${url}`;
+    this.cacheTimestamp = localStorage.getItem(webCacheTimestamp);
+    const renderCache = localStorage.getItem(webCache);
+    function render(text) {
+        o.innerHTML = text;
+    }
+    const downloadAndRender = () => {
+      o.textContent = `downloading...`;
 
-    // API call
-    (async function fetchMarkdownText(){
-      const r = await fetch(url);
-      const text = await r.text();
-      const res = await fetch(`https://api.github.com/markdown`, {
-        headers: {
-          'Content-Type': `application/json`,
-        },
-        method: `POST`,
-        body: JSON.stringify({
-          accept: `application/vnd.github.v3+json`,
-          mode: `markdown`,
-          text,
-        }),
-      });
-      const parsedText = await res.text();
-      o.innerHTML = parsedText;
-      // localStorage.setItem(`Rendered-Markdown`, parsedText); 
-      /*  Set the Parsed text to local Storage to 
-       *    avoid making multiple API Requests    */
-      headingFilter();
-    })();
+      // API call
+      // arrow function is needed
+      (async () => {
+        const r = await fetch(url);
+        const text = await r.text();
+        const res = await fetch(`https://api.github.com/markdown`, {
+          headers: {
+            'Content-Type': `application/json`,
+          },
+          method: `POST`,
+          body: JSON.stringify({
+            accept: `application/vnd.github.v3+json`,
+            mode: `markdown`,
+            text,
+          }),
+        });
+        const parsedText = await res.text();
+        render(parsedText);
+        // console.log("setting local storage");
+        localStorage.setItem(webCache, parsedText);
+        localStorage.setItem(webCacheTimestamp, Date.now());
+        this.updateTimestamps();
+      })();
+    }
+    this.updateRender = downloadAndRender;
 
-    // // Retrieve localStorage parsedText - for testing
-    // const parsedText = localStorage.getItem(`Rendered-Markdown`);
-    // o.innerHTML = parsedText;
-
-
-    // Removing |== ==| 
-    const headingFilter = () => {
-      const subHeadings = document.querySelectorAll(`.markdown-body h2`);
-      console.log(subHeadings);
-      subHeadings.forEach(subHeading => {
-        let c = subHeading.childNodes;
-        subHeading.removeChild(c[4]);
-        subHeading.removeChild(c[2]);
-      });
-    };
-    // headingFilter();
-
-    // fetch(url).then(async r => {
-    //   // actually set the parsed md
-    //   const text = await r.text();
-    //   const res = await fetch(`https://api.github.com/markdown`, {
-    //     headers: {
-    //       'Content-Type': `application/json`,
-    //     },
-    //     method: `POST`,
-    //     body: JSON.stringify({
-    //       accept: `application/vnd.github.v3+json`,
-    //       mode: `markdown`,
-    //       text,
-    //     }),
-    //   }).then(r => r.text());
-    //   o.innerHTML = res;
-    // },
-    // );
+    if (renderCache) {
+      // load content from cache 
+      this.updateTimestamps();
+      render(renderCache)
+      // console.log(`loading from cache`);
+    } else {
+      downloadAndRender();
+    }
   },
+  methods: {
+    update() {
+      // if called from parent, force update content;
+      this.updateRender();
+    },
+    updateTimestamps() {
+      this.timestamp = this.cacheTimestamp;
+      this.timestampString = Date(timestamp.value);
+      this.$emit("updateTimestamp", { timestamp, timestampString });
+    }
+  },
+  data() {
+    return {
+      timestamp,
+      timestampString
+    }
+  }
 };
 
 </script>
