@@ -33,7 +33,7 @@ export default {
       });
       const parsedText = await res.text();
       o.innerHTML = parsedText;
-      // localStorage.setItem(`Rendered-Markdown`, parsedText); 
+      localStorage.setItem(`renderedMarkdown`, parsedText); 
       /*  Set the Parsed text to local Storage to 
        *    avoid making multiple API Requests    */
     })();
