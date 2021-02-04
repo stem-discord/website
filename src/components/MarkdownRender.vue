@@ -41,25 +41,6 @@ export default {
     // // Retrieve localStorage parsedText - for testing
     // const parsedText = localStorage.getItem(`Rendered-Markdown`);
     // o.innerHTML = parsedText;
-
-
-    // fetch(url).then(async r => {
-    //   // actually set the parsed md
-    //   const text = await r.text();
-    //   const res = await fetch(`https://api.github.com/markdown`, {
-    //     headers: {
-    //       'Content-Type': `application/json`,
-    //     },
-    //     method: `POST`,
-    //     body: JSON.stringify({
-    //       accept: `application/vnd.github.v3+json`,
-    //       mode: `markdown`,
-    //       text,
-    //     }),
-    //   }).then(r => r.text());
-    //   o.innerHTML = res;
-    // },
-    // );
   },
 };
 
