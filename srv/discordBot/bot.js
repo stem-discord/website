@@ -55,7 +55,12 @@ client.login(DISCORD_BOT_TOKEN)
     clientLogin(); 
     console.log(`logged in as ${client.user.username}`);
   });
+async function guilds() {
+  await login;
+  return client.guilds.cache;
+}
 
 module.exports = {
   uploadFile,
+  guilds,
 };
