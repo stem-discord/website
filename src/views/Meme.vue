@@ -113,7 +113,7 @@ export default {
       margin: 0 auto;
     }
     .meme-form-error{
-      background-color: tomato;
+      background-color: #ff6347;
       margin-bottom: 3rem;
       // display: none; (toggle between none and flex)
     }
