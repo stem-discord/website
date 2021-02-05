@@ -24,9 +24,9 @@ export default {
       // console.log(`trying to update content`);
       this.$refs.md.update();
     },
-    updateTimestamp({ timestampString: { value } }) {
-      this.lastUpdated = `${moment(String(value)).calendar()}
-      (${moment(String(value)).fromNow()})`;
+    updateTimestamp({ timestamp: { value } }) {
+      this.lastUpdated = `${moment(value, `x`).calendar()}
+      (${moment(value, `x`).fromNow()})`;
     },
   },
   setup() {
