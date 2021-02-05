@@ -284,6 +284,7 @@ module.exports = (app) => {
             ping: true,
           },
         );
+        console.log(url);
       } catch (e) {
         console.log(e);
         return res.status(500).json({ message: `internal server error` });
