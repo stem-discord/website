@@ -245,6 +245,13 @@ module.exports = (app) => {
         res.status(400).json({ message: `login required go to /login` });
         return;
       }
+      // the user must be in the stem guild
+      if (!(await discordBot.guilds()).first().member(q.discordUserObj.id)) {
+        return res.status(403)
+          .json(
+            { message: `You must be in the stem server to do this action!`},
+          );
+      }
       // console.log(req.body);
       // console.log(req.files);
       /**{
