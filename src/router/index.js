@@ -26,7 +26,12 @@ const routes = [
   {
     path: `/rules`,
     name: `rules of the server`,
-    component: () => import(`../views/MarkdownTest.vue`),
+    component: () => import(`../views/MarkdownViews/Rules.vue`),
+  },
+  {
+    path: `/tos`,
+    name: `tos of the server`,
+    component: () => import(`../views/MarkdownViews/TOS.vue`),
   },
   {
     path: `/meme`,
