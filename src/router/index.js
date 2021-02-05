@@ -50,11 +50,10 @@ const routes = [
 ];
 
 // https://router.vuejs.org/guide/advanced/scroll-behavior.html
-function scrollBehavior (to/*, from, savedPosition*/) {
-  // do not use saved position scroll behavior
-  // if (savedPosition) {
-  //   return savedPosition;
-  // }
+function scrollBehavior (to, from, savedPosition) {
+  if (savedPosition && to.hash !== from.hash) {
+    return savedPosition;
+  }
   if (to.hash) {
     const item = document.querySelector(`a.anchor[href="${to.hash}"]`);
     if (item) {
