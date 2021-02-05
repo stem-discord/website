@@ -3,7 +3,8 @@
                   @updateTimestamp="updateTimestamp">
     https://raw.githubusercontent.com/stem-discord/public/main/STEM_Rules.md
   </MarkdownRender>
-  <button @click="updateContent">Last updated: {{ lastUpdated }}</button>
+  <button @click="updateContent" 
+          id="refresh-button">Last updated: {{ lastUpdated }}</button>
 </template>
 // ? `| last update: ${lastUpdated} ago` : ""
 <script>
@@ -36,8 +37,9 @@ export default {
   },
 };
 </script>
-<style scoped>
-button{
+
+<style>
+#refresh-button{
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 6rem;
@@ -53,7 +55,7 @@ button{
   cursor: pointer;
   transition: all 0.4s ease;
 }
-button:hover{
+#refresh-button:hover{
   opacity: 1;
 }
 </style>
