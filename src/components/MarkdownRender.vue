@@ -41,6 +41,8 @@ export default {
           headers: {
             'Content-Type': `application/json`,
           },
+          // do not store this response to the cache since its not even stored on local storage
+          cache: "no-store",
           method: `POST`,
           body: JSON.stringify({
             accept: `application/vnd.github.v3+json`,
