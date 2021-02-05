@@ -1,0 +1,90 @@
+{
+	"title": "this is a title",
+	"namespace": "if this file is meant to be a bundle of circuits, a rememberable export name would help users",
+	"id": "a generated uuid or a user defined one. if this is blank, components will be loaded globally",
+	"description": "this is the description of the ciruit/bundle",
+	"dimensions": {
+		"height": 100,
+		"width": 100,
+		"defaultScale": 0.5,
+		"__#": "default scale is when the component is loaded from another component"
+	},
+	"__##": "main file stage. a component bundle doesnt need this",
+	"props": {
+		"prop uuid": {
+			"name": "name of the prop",
+			"template": "builtin.light",
+			"attributes": {
+				"__#": "this option is only effective if the component supports it",
+				"color": "#ffffff"
+			},
+			"location": {
+				"x": 0,
+				"y": 0,
+				"rot": 0,
+				"__#": "rotation is in degrees, integer"
+			},
+			"output": {
+				"__#": "props that have the attribute type will be brought in from a global import file.js which contains most common stuff and its logic. other files can be included at the risk of the user itself",
+				"pass": "prop uuid3",
+				"__##": "the above property is effectively stored as light.pass somewhere in the javascript file"
+			},
+			"_state": {
+				"__#": "this isnt stored on the json"
+			}
+		},
+		"prop uuid2": {
+			"name": "my comment",
+			"template": "builtin.comment",
+			"attributes": {
+				"color": "#ff00000",
+				"comment": "this is a comment"
+			}
+		},
+		"prop uuid3": {
+			"name": "mycomponent",
+			"template": "the uuid"
+		},
+		"prop uuid4": {
+			"name": "a test switch",
+			"type": "SWITCH",
+			"location": {
+				"x": 10,
+				"y": 0,
+				"rot": 0
+			},
+			"output": {
+				"SWITCH_OUT": "prop uuid",
+				"__#": "this connects the switch and the light"
+			}
+		}
+	},
+	"__#": "technically you can export to json and import it one by one, but that doesnt make sense. if you want to use a component here from another file, do mycircuit.mycomponent",
+	"components": {
+		"uuid": {
+			"__#": "this is recursive",
+			"title": "this is a title of the component",
+			"id": "mycomponent",
+			"__##": "the loader tries to find 'mycomponent' from builtins first ex) light bulb. if it fails, it tries to find it from this file. if that fails, throws an undefined component error",
+			"input": {
+				"input uuid": {
+					"name": "the name of the input"
+				},
+				"input uuid 2": {
+					"name": "another input"
+				}
+			},
+			"output": {
+				"output uuid": {
+					"name": "the name of the input"
+				},
+				"output uuid 2": {
+					"name": "another input"
+				}
+			}
+		}
+	},
+	"requires": [
+		"export name. this should help the user to find out. it also tries to load the export"
+	]
+}

@@ -1,0 +1,7 @@
+{
+  "__comment": "FIXME: there is this stupid bug saying that node_modules/source-map/source-map is not found. if you can fix this i would appreciate it",
+  "typeAcquisition": {
+    "exclude": ["dotenv"]
+  },
+  "include": ["./src/**/*"]
+}
