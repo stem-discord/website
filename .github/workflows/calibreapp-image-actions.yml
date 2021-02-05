@@ -33,4 +33,4 @@ jobs:
           # See https://docs.github.com/en/actions/reference/authentication-in-a-workflow and https://help.github.com/en/articles/virtual-environments-for-github-actions#token-permissions
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           # do not optimize some large files in public
-          ignorePaths: 'public/**'
+          ignorePaths: 'public/**,html/**'
