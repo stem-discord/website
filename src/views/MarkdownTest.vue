@@ -37,6 +37,7 @@ export default {
   },
 };
 </script>
+
 <style>
 #refresh-button{
   margin-left: auto;

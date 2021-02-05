@@ -51,13 +51,13 @@ const routes = [
 
 // https://router.vuejs.org/guide/advanced/scroll-behavior.html
 function scrollBehavior (to, from, savedPosition) {
-  if (savedPosition) {
+  if (savedPosition && to.hash !== from.hash) {
     return savedPosition;
   }
   if (to.hash) {
-    const item = document.querySelector(`a[href="${to.hash}"]`);
+    const item = document.querySelector(`a.anchor[href="${to.hash}"]`);
     if (item) {
-      item.scrollIntoView();
+      item.scrollIntoView({ behavior: `smooth`});
     }
   }
 }
