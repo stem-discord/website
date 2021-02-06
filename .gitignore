@@ -4,6 +4,13 @@ node_modules
 /local
 /dump
 
+# ignore files starting with -
+-*
+
+# ignore folders starting with -
+/-*
+
+
 # database
 database.json
 
