@@ -92,7 +92,9 @@ if (USER && PASS) {
 const store = new MongoDBSession({
   uri: `${MONGODB_URI}/${MONGO.session}`,
   collection: `cookies`,
-  ...authObj,
+  connectionOptions:{
+    ...authObj,
+  },
 });
 
 
