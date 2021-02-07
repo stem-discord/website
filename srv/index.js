@@ -89,9 +89,7 @@ const store = new MongoDBSession({
 let authObj = {};
 if (USER && PASS) {
   authObj = {
-    auth: {
-      authSource: `admin`,
-    },
+    authSource: `admin`,
     user: USER,
     pass: PASS,
   };
