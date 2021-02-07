@@ -11,6 +11,8 @@ const discordBot = require(`${__dirname}/discordBot/bot.js`);
 const fetch = require(`node-fetch`);
 const getRawBody = require(`raw-body`);
 const contentType = require(`content-type`);
+const stemDiscordServerDb = require(`${__dirname}/stemDiscord`);
+
 
 require(`dotenv`).config({ path: `../.env` });
 
@@ -76,12 +78,6 @@ if (!MONGODB_URI) {
   process.exit(1);
 }
 
-// cookies
-const store = new MongoDBSession({
-  uri: `${MONGODB_URI}/${MONGO.session}`,
-  collection: `cookies`,
-});
-
 function connectionFactory(dbId) {
   return mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
     useNewUrlParser: true,
@@ -93,6 +89,12 @@ function connectionFactory(dbId) {
 const cookieSession = connectionFactory(MONGO.session);
 const userDb = connectionFactory(MONGO.users);
 const memeDb = connectionFactory(MONGO.memes);
+
+// cookies
+const store = new MongoDBSession({
+  mongooseConnection: cookieSession,
+  collection: `cookies`,
+});
 
 const {
   UserSchema, 
