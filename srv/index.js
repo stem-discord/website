@@ -80,12 +80,6 @@ if (!MONGODB_URI) {
   process.exit(1);
 }
 
-// cookies
-const store = new MongoDBSession({
-  uri: `${MONGODB_URI}/${MONGO.session}`,
-  collection: `cookies`,
-});
-
 let authObj = {};
 if (USER && PASS) {
   authObj = {
@@ -94,6 +88,13 @@ if (USER && PASS) {
     pass: PASS,
   };
 }
+// cookies
+const store = new MongoDBSession({
+  uri: `${MONGODB_URI}/${MONGO.session}`,
+  collection: `cookies`,
+  ...authObj,
+});
+
 
 function connectionFactory(dbId) {
   return mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
