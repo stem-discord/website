@@ -70,6 +70,8 @@ const {
   DISCORD_CLIENT_ID,
   DISCORD_CLIENT_SECRET,
   HOST_BASE,
+  USER,
+  PASS,
 } = process.env;
 
 // mongoose setup
@@ -78,23 +80,35 @@ if (!MONGODB_URI) {
   process.exit(1);
 }
 
+// cookies
+const store = new MongoDBSession({
+  uri: `${MONGODB_URI}/${MONGO.session}`,
+  collection: `cookies`,
+});
+
+let authObj = {};
+if (USER && PASS) {
+  authObj = {
+    auth: {
+      authSource: `admin`,
+    },
+    user: USER,
+    pass: PASS,
+  };
+}
+
 function connectionFactory(dbId) {
   return mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
+    ...authObj,
   });
 }
 
 const cookieSession = connectionFactory(MONGO.session);
 const userDb = connectionFactory(MONGO.users);
 const memeDb = connectionFactory(MONGO.memes);
-
-// cookies
-const store = new MongoDBSession({
-  mongooseConnection: cookieSession,
-  collection: `cookies`,
-});
 
 const {
   UserSchema, 
