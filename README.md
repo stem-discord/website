@@ -46,6 +46,7 @@ MONGODB_URI_AUTH=mongodb://admin:0x205e048ae0632cee0x205e048ae0632cee0x205e048ae
 DB_USER=admin user account (usually admin)
 DB_PASS=the password
 DB_AUTHSOURCE=the database to validate (usually admin)
+PROCESS_NAME=used for pm2 restart on github. required if you want to test github push actions
 ```
 
 `srv/discordBot`
