@@ -47,6 +47,7 @@ if (DB) {
       ).lean();
       if (q === null) 
         return res.status(404).json({message:`user is not found`});
+      q._id = undefined;
       res.json(q);
     });
     return app;
