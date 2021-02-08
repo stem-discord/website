@@ -45,6 +45,7 @@ if (DB) {
         return res.status(404).json({message:`user is not found`});
       res.json(q);
     });
+    return app;
   })();
 
 
