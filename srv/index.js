@@ -94,10 +94,10 @@ if (DB_USER && DB_PASS) {
 }
 // cookies
 const store = new MongoDBSession({
-  uri: `${MONGODB_URI_AUTH}/${MONGO.session}`,
+  uri: `${MONGODB_URI_AUTH || MONGODB_URI}/${MONGO.session}`,
   collection: `cookies`,
   connectionOptions:{
-    authSource: `${DB_AUTHSOURCE}`,
+    authSource: MONGODB_URI_AUTH && `${DB_AUTHSOURCE}`,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
