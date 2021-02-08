@@ -40,7 +40,11 @@ if (DB) {
         return res.status(400).json({ message: `no user id provided` });
       // TODO: add authentication module
       // if auth is true, use the userInfo model not the public one
-      const q = await userInfoPublic.findOne({ server, user_id }).lean();
+      // TODO: find better alternative to this
+      const q = await userInfoPublic.findOne(
+        { server, user_id }, 
+        { thanked:1, stats: 1 },
+      ).lean();
       if (q === null) 
         return res.status(404).json({message:`user is not found`});
       res.json(q);
