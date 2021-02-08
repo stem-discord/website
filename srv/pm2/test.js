@@ -29,6 +29,7 @@ pm2.connect((e) => {
           `status:${d.status}
 		cpu usage: ${d.cpu}
 		memory usage:${d.memory}`);
+        pm2.disconnect();
       });
     }, 10 * 1000);
   });
