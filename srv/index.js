@@ -125,9 +125,9 @@ const {
 
 // finally fixed everything
 // TODO: soft code this
-const CookieModal = cookieSession.model(MONGO.session, CookieSchema, `cookies`);
-const UserModal = userDb.model(MONGO.users, UserSchema, `users`);
-const MemeModal = memeDb.model(MONGO.memes, MemeSchema, `memes`);
+const CookieModel = cookieSession.model(MONGO.session, CookieSchema, `cookies`);
+const UserModel = userDb.model(MONGO.users, UserSchema, `users`);
+const MemeModel = memeDb.model(MONGO.memes, MemeSchema, `memes`);
 
 // https redirect is done on nginx
 const accessLogStream = fs.createWriteStream(
@@ -196,7 +196,7 @@ module.exports = (app) => {
         //   ownerId: `341446613056880641`,
         // });
         // await newMeme.save();
-        memes = await MemeModal.find({ownerId, _id: memeId}).lean();
+        memes = await MemeModel.find({ownerId, _id: memeId}).lean();
       } catch (e) {
         return res.status(500).json({ message: e.message });
       }
@@ -210,7 +210,7 @@ module.exports = (app) => {
       try {
         if (!req.params.id) 
           return res.status(400).json({ message: `no meme id provided`});
-        meme = await MemeModal.findById(req.params.id);
+        meme = await MemeModel.findById(req.params.id);
         if (meme === null) {
           return res.status(404).json({ message: `no entry found` });
         }
@@ -262,7 +262,7 @@ module.exports = (app) => {
       // add session id validation
       // post it to a discord database channel and retrieve url
       
-      let q = await UserModal.findOne({ sessionId: req.session.id});
+      let q = await UserModel.findOne({ sessionId: req.session.id});
       if (!q) {
         // user doesnt exist
         res.status(400).json({ message: `login required go to /login` });
@@ -325,7 +325,7 @@ module.exports = (app) => {
   // discord login
   app.get(`/login`, async (req, res, next) => {
     // add code that checks if the session already has a token
-    let q = await UserModal.findOne({ sessionId: req.session.id});
+    let q = await UserModel.findOne({ sessionId: req.session.id});
     if (q) {
       // user exists
       if (q.discordId) {
@@ -387,13 +387,13 @@ module.exports = (app) => {
       userInfo = await userInfo.json();
       // if user info already exists, welcome back
       console.log(userInfo);
-      const q = await UserModal.findOne({
+      const q = await UserModel.findOne({
         discordId: userInfo.id,
       });
      
       if (q === null) {
         // new user
-        const newUser = new UserModal({
+        const newUser = new UserModel({
           discordId: userInfo.id,
           discordUserObj: userInfo,
           accessToken,
