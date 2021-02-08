@@ -2,6 +2,7 @@
 
 // i should probably create a mock app
 // TODO: create a mock app instead of dealing with the actual process
+// make configuration for local env file for this test -> fall back to main env
 
 const pm2 = require(`pm2`);
 require(`dotenv`).config({ path: `.env` });
