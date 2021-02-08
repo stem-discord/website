@@ -229,7 +229,8 @@ module.exports = (app) => {
       res.json(res.meme);
     });
 
-    app.get(`/`, (req, res) => {
+
+    app.get(`*`, (req, res) => {
       res.status(404).json({ error: `invalid end point`});
     });
 
