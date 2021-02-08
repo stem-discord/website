@@ -4,6 +4,7 @@
 // TODO: create a mock app instead of dealing with the actual process
 
 const pm2 = require(`pm2`);
+require(`dotenv`).config({ path: `.env` });
 
 const {
   PROCESS_NAME:NAME,
@@ -11,7 +12,7 @@ const {
 
 pm2.connect((e) => {
   if (e) {
-    console.error(err);
+    console.error(e);
     process.exit(2);
   }
 
