@@ -233,7 +233,7 @@ module.exports = (app) => {
     const disabledModule = (() => {
       const app = express();
       app.get(`/*`, (req, res) => {
-        res.status(503);
+        return res.status(503).send(`this service is no longer available`);
       });
       return app;
     });
