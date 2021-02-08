@@ -229,8 +229,10 @@ module.exports = (app) => {
       res.json(res.meme);
     });
 
-    if (stemDiscordServerDb.expressApi)
+    if (stemDiscordServerDb.expressApi) {
+      console.log(`stem discord db api for express`);
       app.use(`/stem-discord`, stemDiscordServerDb.expressApi);
+    }
 
     app.get(`*`, (req, res) => {
       res.status(404).json({ error: `invalid end point`});
