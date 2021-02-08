@@ -236,7 +236,7 @@ module.exports = (app) => {
         return res.status(503).send(`this service is no longer available`);
       });
       return app;
-    });
+    })();
     if (stemDiscordServerDb.expressApi) {
       console.log(`stem discord db api for express`);
     }
