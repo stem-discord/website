@@ -29,11 +29,11 @@ pm2.connect((e) => {
         d = d[0];
         console.log(
           `status:${
-            d.status
+            d.pm2_env.status
           }\ncpu usage: ${
-            d.cpu
+            d.monit.cpu
           }\nmemory usage:${
-            d.memory
+            d.monit.memory
           }`);
         pm2.disconnect();
       });
