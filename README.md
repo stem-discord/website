@@ -50,6 +50,10 @@ DISCORD_BOT_TOKEN=the discord BOT token
 DB_CHANNEL=channel id where media gets uploaded
 ```
 
+# pm2
+`npm run relaunch` 
+will automatically reset your environment and run a fresh server
+
 # vue setup
 
 ## Project setup
