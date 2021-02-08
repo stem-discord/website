@@ -26,7 +26,7 @@ pm2.connect((e) => {
           return;
         }
         console.log(`there are ${d.length} processes. selecting the first one`);
-        d = d[0];
+        d = d[0].pm2_env;
         console.log(
           `status:${
             d.pm2_env.status
