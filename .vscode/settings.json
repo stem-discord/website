@@ -1,6 +1,7 @@
 {
   "files.eol": "\n",
   "editor.detectIndentation": true,
+  "editor.tabSize": 2,
   "editor.defaultFormatter": "octref.vetur",
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
