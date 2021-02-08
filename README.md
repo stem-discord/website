@@ -42,6 +42,10 @@ COOKIE_SECRET=secret key. not required for dev server
 DISCORD_CLIENT_SECRET=the discord application token
 DISCORD_CLIENT_ID=the id
 MONGODB_URI=mongodb uri. required. add auth info here
+MONGODB_URI_AUTH=mongodb://admin:0x205e048ae0632cee0x205e048ae0632cee0x205e048ae0632cee@127.0.0.1:27017
+DB_USER=admin user account (usually admin)
+DB_PASS=the password
+DB_AUTHSOURCE=the database to validate (usually admin)
 ```
 
 `srv/discordBot`
