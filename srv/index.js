@@ -229,9 +229,19 @@ module.exports = (app) => {
       res.json(res.meme);
     });
 
+    //TODO: soft code this
+    const disabledModule = (() => {
+      const app = express();
+      app.get(`/*`, (req, res) => {
+        res.status(503);
+      });
+    });
     if (stemDiscordServerDb.expressApi) {
       console.log(`stem discord db api for express`);
-      app.use(`/stem-discord`, stemDiscordServerDb.expressApi);
+      app.use(`/stem-discord`, 
+        stemDiscordServerDb.expressApi ? 
+          stemDiscordServerDb.expressApi :
+          disabledModule);
     }
 
     app.get(`*`, (req, res) => {
