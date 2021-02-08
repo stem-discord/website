@@ -85,7 +85,7 @@ if (!MONGODB_URI) {
 }
 
 let authObj = {};
-if (DB_USER && DB_PASS) {
+if (DB_USER && DB_PASS && MONGODB_URI_AUTH) {
   authObj = {
     authSource: `admin`,
     user: DB_USER,
