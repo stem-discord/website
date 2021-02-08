@@ -25,6 +25,8 @@ pm2.connect((e) => {
           console.error(e);
           return;
         }
+        console.log(`there are ${d.length} processes. selecting the first one`);
+        d = d[0];
         console.log(
           `status:${
             d.status
