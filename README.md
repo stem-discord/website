@@ -47,6 +47,7 @@ DB_USER=admin user account (usually admin)
 DB_PASS=the password
 DB_AUTHSOURCE=the database to validate (usually admin)
 PROCESS_NAME=used for pm2 restart on github. required if you want to test github push actions
+STEM_DISCORD_DB=the database for stem discord. not required# mongodb://localhost:27018
 ```
 
 `srv/discordBot`
