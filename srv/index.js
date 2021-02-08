@@ -84,7 +84,7 @@ if (!MONGODB_URI) {
 let authObj = {};
 if (DB_USER && DB_PASS) {
   authObj = {
-      authSource: `admin`,
+    authSource: `admin`,
     user: DB_USER,
     pass: DB_PASS,
   };
@@ -95,6 +95,8 @@ const store = new MongoDBSession({
   collection: `cookies`,
   connectionOptions:{
     authSource: `${DB_AUTHSOURCE}`,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   },
 });
 
