@@ -33,7 +33,7 @@ if (DB) {
     });
 
     app.get(`/user`, async (req, res) => {
-      const { server, user_id } = req.params;
+      const { server, user_id } = req.query;
       if (!server) 
         return res.status(400).json({ message: `no server id provided`});
       if (!user_id) 
