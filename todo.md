@@ -1,2 +1,2 @@
-TODO: fix file sizes
-fix api endpoint
+README.md
+rewrite configuring section
