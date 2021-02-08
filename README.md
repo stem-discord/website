@@ -27,6 +27,10 @@ make sure to run `npm run build` so vue can build files to `./dist/`
 
 Good news, we actually use a mongodb. bad news, good luck configuring it because im not going to put a whole tutorial on how to set up a mongodb
 
+f*king mustarded mongo f\*kin db wont evevn ducking show the mustarded stupid shit where the mongoose doesnt even frikin allow the connection option of pass and user aso you have to cencodiaifna;fioasjhfoidnf;oaisdfnasdo;inf;edosiaunf;oas
+
+> make sure the mongodb_uri contains auth info
+
 # configuring
 `/srv`
 ```env
@@ -37,7 +41,7 @@ HOST_BASE=http://localhost:3000
 COOKIE_SECRET=secret key. not required for dev server
 DISCORD_CLIENT_SECRET=the discord application token
 DISCORD_CLIENT_ID=the id
-MONGODB_URI=mongodb uri. required for dev
+MONGODB_URI=mongodb uri. required. add auth info here
 ```
 
 `srv/discordBot`
