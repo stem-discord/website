@@ -26,9 +26,13 @@ pm2.connect((e) => {
           return;
         }
         console.log(
-          `status:${d.status}
-		cpu usage: ${d.cpu}
-		memory usage:${d.memory}`);
+          `status:${
+            d.status
+          }\ncpu usage: ${
+            d.cpu
+          }\nmemory usage:${
+            d.memory
+          }`);
         pm2.disconnect();
       });
     }, 10 * 1000);
