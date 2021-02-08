@@ -235,6 +235,7 @@ module.exports = (app) => {
       app.get(`/*`, (req, res) => {
         res.status(503);
       });
+      return app;
     });
     if (stemDiscordServerDb.expressApi) {
       console.log(`stem discord db api for express`);
