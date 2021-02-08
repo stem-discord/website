@@ -70,8 +70,8 @@ const {
   DISCORD_CLIENT_ID,
   DISCORD_CLIENT_SECRET,
   HOST_BASE,
-  USER,
-  PASS,
+  DB_USER,
+  DB_PASS,
 } = process.env;
 
 // mongoose setup
@@ -81,11 +81,13 @@ if (!MONGODB_URI) {
 }
 
 let authObj = {};
-if (USER && PASS) {
+if (DB_USER && DB_PASS) {
   authObj = {
-    authSource: `admin`,
-    user: USER,
-    pass: PASS,
+    auth: {
+      authSource: `admin`,
+    },
+    user: DB_USER,
+    pass: DB_PASS,
   };
 }
 // cookies
