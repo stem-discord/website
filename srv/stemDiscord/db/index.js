@@ -1,4 +1,4 @@
-const userInfoPublicSchema = require(`${__dirname}/schemas/userInfo.js`);
+const userInfoPublicSchema = require(`${__dirname}/schemas/userInfoPublic.js`);
 
 module.exports = {
   userInfoPublicSchema,
