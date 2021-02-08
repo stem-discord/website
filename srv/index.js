@@ -72,6 +72,7 @@ const {
   HOST_BASE,
   DB_USER,
   DB_PASS,
+  DB_AUTHSOURCE,
 } = process.env;
 
 // mongoose setup
@@ -83,9 +84,7 @@ if (!MONGODB_URI) {
 let authObj = {};
 if (DB_USER && DB_PASS) {
   authObj = {
-    auth: {
       authSource: `admin`,
-    },
     user: DB_USER,
     pass: DB_PASS,
   };
@@ -95,7 +94,7 @@ const store = new MongoDBSession({
   uri: `${MONGODB_URI}/${MONGO.session}`,
   collection: `cookies`,
   connectionOptions:{
-    ...authObj,
+    authSource: `${DB_AUTHSOURCE}`,
   },
 });
 
