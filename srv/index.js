@@ -239,11 +239,11 @@ module.exports = (app) => {
     });
     if (stemDiscordServerDb.expressApi) {
       console.log(`stem discord db api for express`);
-      app.use(`/stem-discord`, 
-        stemDiscordServerDb.expressApi ? 
-          stemDiscordServerDb.expressApi :
-          disabledModule);
     }
+    app.use(`/stem-discord`, 
+      stemDiscordServerDb.expressApi ? 
+        stemDiscordServerDb.expressApi :
+        disabledModule);
 
     app.get(`*`, (req, res) => {
       res.status(404).json({ error: `invalid end point`});
