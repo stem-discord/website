@@ -67,6 +67,7 @@ const MONGO = {
 const {
   COOKIE_SECRET = `secret`,
   MONGODB_URI,
+  MONGODB_URI_AUTH, // with admin credientials on the connection string itself
   DISCORD_CLIENT_ID,
   DISCORD_CLIENT_SECRET,
   HOST_BASE,
@@ -91,7 +92,7 @@ if (DB_USER && DB_PASS) {
 }
 // cookies
 const store = new MongoDBSession({
-  uri: `${MONGODB_URI}/${MONGO.session}`,
+  uri: `${MONGODB_URI_AUTH}/${MONGO.session}`,
   collection: `cookies`,
   connectionOptions:{
     authSource: `${DB_AUTHSOURCE}`,
