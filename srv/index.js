@@ -224,6 +224,25 @@ module.exports = (app) => {
       res.json(res.meme);
     });
 
+    app.post(`/meme/upvote/:id`, (req, res) => {
+
+    });
+    app.delete(`meme/upvote/id`, (req, res) => {
+
+    });
+    app.post(`/meme/comment`, (req, res) => {
+
+    });
+    app.delete(`/meme/comment/:id`, (req, res) => {
+
+    });
+
+    app.delete(`/meme/:id`, (req, res) => {
+      console.log(`deleting meme ${req.params.id}`);
+      // TODO: add auth check like if the user is a moderator 
+      // at the stem server, grant authentication anyway
+    });
+
     //TODO: soft code this
     const disabledModule = (() => {
       const app = express();
