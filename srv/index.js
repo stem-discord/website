@@ -192,10 +192,6 @@ module.exports = (app) => {
           ownerId,
           memeId,
         } = req.query;
-        // const newMeme = new MemeModal({
-        //   ownerId: `341446613056880641`,
-        // });
-        // await newMeme.save();
         memes = await MemeModel.find({ownerId, _id: memeId}).lean();
       } catch (e) {
         return res.status(500).json({ message: e.message });
