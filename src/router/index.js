@@ -36,7 +36,12 @@ const routes = [
   {
     path: `/meme`,
     name: `we doin meme events`,
-    component: () => import(`../views/Meme.vue`),
+    component: () => import(`@/views/Meme.vue`),
+  },
+  {
+    path: `/memes`,
+    name: `grid of memes`,
+    component: () => import(`@/views/Memes.vue`),
   },
   {
     path: `/404`,
