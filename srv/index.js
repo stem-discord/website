@@ -183,15 +183,15 @@ module.exports = (app) => {
       res.json({message: `OK`});
     });
 
+    function memeFormatter({ url, comments }) {
+      return { url, comments };
+    }
     // middleware for entire meme query
     async function getMemes(req, res, next) {
       let memes = [];
       // formatter
-      function f({ url, comments }) {
-        return { url, comments };
-      }
       try {
-        memes = (await MemeModel.find().lean()).map(f);
+        memes = (await MemeModel.find().lean()).map(memeFormatter);
       } catch (e) {
         return res.status(500).json({ message: e.message });
       }
@@ -212,7 +212,7 @@ module.exports = (app) => {
       } catch (e) {
         return res.status(500).json({ message: e.message});
       }
-      res.meme = meme;
+      res.meme = memeFormatter(meme);
       next();
     }
 
