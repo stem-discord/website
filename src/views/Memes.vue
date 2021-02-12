@@ -2,7 +2,7 @@
   <div class="meme-wrapper">
     <Meme 
       v-for="m in memes"
-      :key="m.id"
+      :key="m._id"
       :url="m.url"
       :comments="m.comments"/>
   </div>
@@ -64,9 +64,11 @@ export default {
 <style lang="scss">
 
 .meme-wrapper {
-  grid-gap: 3px;
+  // this style is not a good idea but it will do for now
+  margin: 40px;
+  display: grid;
+  grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-template-rows: 300px;
 }
 
 </style>
