@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "@/views/Home.vue";
 
 const routes = [
   {
@@ -14,24 +14,24 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function() {
-      return import(/* webpackChunkName: "about" */ `../views/About.vue`);
+      return import(/* webpackChunkName: "about" */ `@/views/About.vue`);
     },
   },{
     path: `/sponsors`,
     name: `sponsors`,
     component: function() {
-      return import(`../views/Sponsors.vue`);
+      return import(`@/views/Sponsors.vue`);
     },
   },
   {
     path: `/rules`,
     name: `rules of the server`,
-    component: () => import(`../views/MarkdownViews/Rules.vue`),
+    component: () => import(`@/views/MarkdownViews/Rules.vue`),
   },
   {
     path: `/tos`,
     name: `tos of the server`,
-    component: () => import(`../views/MarkdownViews/TOS.vue`),
+    component: () => import(`@/views/MarkdownViews/TOS.vue`),
   },
   {
     path: `/meme`,
@@ -42,14 +42,14 @@ const routes = [
     path: `/404`,
     name: `explicit 404`,
     component: function() {
-      return import(`../views/404.vue`);
+      return import(`@/views/404.vue`);
     },
   },
   {
     path: `/:pathMatch(.*)*`,
     name: `catch page`,
     component: function() {
-      return import(`../views/404.vue`);
+      return import(`@/views/404.vue`);
     },
   },
 ];
