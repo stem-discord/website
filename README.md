@@ -2,7 +2,7 @@
 
 # quick start and help with front end
 
-if you dont have key and cert, go to `vue.config.js` and set https to false.  
+if you dont have key and cert, set `NO_HTTPS` on your `.env` file to true
 do `npm run serve` and vue cli will launch a front end hot reload server. its pretty much out of the box.  
 if you want to do some fancy stuff, read below
 
