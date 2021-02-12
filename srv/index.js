@@ -186,13 +186,12 @@ module.exports = (app) => {
     // middleware for entire meme query
     async function getMemes(req, res, next) {
       let memes = [];
+      // formatter
+      function f({ url, comments }) {
+        return { url, comments };
+      }
       try {
-        // FIXME: this
-        const { 
-          ownerId,
-          memeId,
-        } = req.query;
-        memes = await MemeModel.find({ownerId, _id: memeId}).lean();
+        memes = (await MemeModel.find().lean()).map(f);
       } catch (e) {
         return res.status(500).json({ message: e.message });
       }
