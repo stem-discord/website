@@ -15,6 +15,7 @@ module.exports = {
       cert: fs.readFileSync(`./local/cert.pem`)},
     public: `http${process.env.NO_HTTPS ? `` : `s`}://localhost:3000`,
   },
+  ignoredElements: [/^ion-/],
   pluginOptions: {
     express: {
       shouldServeApp: true,
