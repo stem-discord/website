@@ -205,7 +205,7 @@ module.exports = (app) => {
       try {
         if (!req.params.id) 
           return res.status(400).json({ message: `no meme id provided`});
-        meme = await MemeModel.findById(req.params.id);
+        meme = await MemeModel.findById(req.params.id).lean();
         if (meme === null) {
           return res.status(404).json({ message: `no entry found` });
         }
