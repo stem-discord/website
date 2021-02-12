@@ -183,8 +183,8 @@ module.exports = (app) => {
       res.json({message: `OK`});
     });
 
-    function memeFormatter({ url, comments }) {
-      return { url, comments };
+    function memeFormatter({ _id, url, comments }) {
+      return { _id, url, comments };
     }
     // middleware for entire meme query
     async function getMemes(req, res, next) {
