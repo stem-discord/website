@@ -19,8 +19,27 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+
+$meme-d: 240px;
+
 div.meme-panel {
-  background-color: black;
+  background-color: grey;
+  overflow: hidden;
+  width: $meme-d;
+  margin: 2rem 2rem;
+  border-radius: 0.4rem;
+  img{
+    overflow: hidden;
+    object-fit: cover;
+    transition: all 0.6s ease;
+    height: $meme-d;
+    width: $meme-d;
+  }
+  &:hover{
+    img{
+      transform: scale(1.2);
+    }
+  } 
 }
 </style>
