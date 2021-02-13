@@ -52,62 +52,62 @@ export default {
             comments: [],
           },
           {
-            _id: 1,
+            _id: 3,
             url: `https://tenor.com/view/ohayo-bye-wave-gif-13911439`,
             comments: [],
           },
           {
-            _id: 2,
+            _id: 4,
             url: `https://tenor.com/view/elephant-running-gif-20266814`,
             comments: [],
           },
           {
-            _id: 1,
+            _id: 5,
             url: `https://tenor.com/view/ohayo-bye-wave-gif-13911439`,
             comments: [],
           },
           {
-            _id: 2,
+            _id: 6,
             url: `https://tenor.com/view/elephant-running-gif-20266814`,
             comments: [],
           },
           {
-            _id: 1,
+            _id: 7,
             url: `https://tenor.com/view/ohayo-bye-wave-gif-13911439`,
             comments: [],
           },
           {
-            _id: 2,
+            _id: 8,
             url: `https://tenor.com/view/elephant-running-gif-20266814`,
             comments: [],
           },
           {
-            _id: 1,
+            _id: 9,
             url: `https://tenor.com/view/ohayo-bye-wave-gif-13911439`,
             comments: [],
           },
           {
-            _id: 2,
+            _id: 10,
             url: `https://tenor.com/view/elephant-running-gif-20266814`,
             comments: [],
           },
           {
-            _id: 1,
+            _id: 11,
             url: `https://tenor.com/view/ohayo-bye-wave-gif-13911439`,
             comments: [],
           },
           {
-            _id: 2,
+            _id: 12,
             url: `https://tenor.com/view/elephant-running-gif-20266814`,
             comments: [],
           },
           {
-            _id: 1,
+            _id: 13,
             url: `https://tenor.com/view/ohayo-bye-wave-gif-13911439`,
             comments: [],
           },
           {
-            _id: 2,
+            _id: 14,
             url: `https://tenor.com/view/elephant-running-gif-20266814`,
             comments: [],
           },
@@ -132,7 +132,7 @@ $meme-d: 240px;
 .memes-container{
   margin: 1rem;
   padding: 1rem;
-  // background-color: white;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,14 +149,8 @@ $meme-d: 240px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($meme-d, max-content));
-    grid-gap: 1rem;
-    padding: initial;
+    grid-gap: 4rem;
     justify-content: center;
-      // display: grid;
-      // grid-template-columns: repeat(auto-fit, minmax(210px, max-content));
-      // grid-gap: 16px;
-      // padding: initial;
-      // justify-content: center;
   }
 }
 

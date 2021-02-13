@@ -27,7 +27,7 @@ div.meme-panel {
   background-color: grey;
   overflow: hidden;
   width: $meme-d;
-  margin: 2rem 2rem;
+  // margin: 2rem 2rem;
   border-radius: 0.4rem;
   img{
     overflow: hidden;
