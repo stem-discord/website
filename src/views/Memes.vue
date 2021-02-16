@@ -126,26 +126,23 @@ export default {
 </script>
 
 <style lang="scss">
-
-$meme-d: 240px;
+@import '../assets/_utils.scss';
 
 .memes-container{
+  @extend %center-div;
   margin: 1rem;
   padding: 1rem;
-  background-color: white;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  margin-bottom: 10rem;
   h1{
     align-self: flex-start;
     margin-bottom: 1rem;
-    margin-left: 1rem;
+    margin-left: 4rem;
   }
   .meme-wrapper{
     // this style is not a good idea but it will do for now
-    background-color: grey;
+    // background-color: grey;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($meme-d, max-content));
