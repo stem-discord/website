@@ -2,7 +2,7 @@
 
 # quick start and help with front end
 
-if you dont have key and cert, go to `vue.config.js` and set https to false.  
+if you dont have key and cert, set `NO_HTTPS` on your `.env` file to true
 do `npm run serve` and vue cli will launch a front end hot reload server. its pretty much out of the box.  
 if you want to do some fancy stuff, read below
 
@@ -42,7 +42,7 @@ COOKIE_SECRET=secret key. not required for dev server
 DISCORD_CLIENT_SECRET=the discord application token
 DISCORD_CLIENT_ID=the id
 MONGODB_URI=mongodb uri. required. add auth info here
-MONGODB_URI_AUTH=mongodb://admin:0x205e048ae0632cee0x205e048ae0632cee0x205e048ae0632cee@127.0.0.1:27017
+MONGODB_URI_AUTH=mongodb://admin:YOURPASSWORDHERELOL@127.0.0.1:27017
 DB_USER=admin user account (usually admin)
 DB_PASS=the password
 DB_AUTHSOURCE=the database to validate (usually admin)

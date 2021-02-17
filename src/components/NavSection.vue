@@ -1,7 +1,9 @@
 <template>
   <div class="top-nav">
     <img alt="STEM logo"
-         src="../assets/logo.png" />
+         src="../assets/logo.png"
+         @click="goHome"
+         id="goHomeLogo"/>
 
     <div>
       <h1>STEM Helpers & Students</h1>
@@ -12,6 +14,11 @@
 <script>
 export default {
   name: `home nav`,
+  methods: {
+    goHome() {
+      return this.$router.push(`/`);
+    },
+  },
 };
 </script>
 
@@ -31,5 +38,8 @@ img {
   width: auto;
   object-fit: contain;
   max-width: 100%;
+}
+#goHomeLogo {
+  cursor: pointer
 }
 </style>

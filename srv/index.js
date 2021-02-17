@@ -183,20 +183,15 @@ module.exports = (app) => {
       res.json({message: `OK`});
     });
 
+    function memeFormatter({ _id, url, comments }) {
+      return { _id, url, comments };
+    }
     // middleware for entire meme query
     async function getMemes(req, res, next) {
       let memes = [];
+      // formatter
       try {
-        // FIXME: this
-        const { 
-          ownerId,
-          memeId,
-        } = req.query;
-        // const newMeme = new MemeModal({
-        //   ownerId: `341446613056880641`,
-        // });
-        // await newMeme.save();
-        memes = await MemeModel.find({ownerId, _id: memeId}).lean();
+        memes = (await MemeModel.find().lean()).map(memeFormatter);
       } catch (e) {
         return res.status(500).json({ message: e.message });
       }
@@ -210,14 +205,14 @@ module.exports = (app) => {
       try {
         if (!req.params.id) 
           return res.status(400).json({ message: `no meme id provided`});
-        meme = await MemeModel.findById(req.params.id);
+        meme = await MemeModel.findById(req.params.id).lean();
         if (meme === null) {
           return res.status(404).json({ message: `no entry found` });
         }
       } catch (e) {
         return res.status(500).json({ message: e.message});
       }
-      res.meme = meme;
+      res.meme = memeFormatter(meme);
       next();
     }
 
@@ -227,6 +222,25 @@ module.exports = (app) => {
 
     app.get(`/meme/:id`, getMeme, (req, res) => {
       res.json(res.meme);
+    });
+
+    app.post(`/meme/upvote/:id`, (req, res) => {
+
+    });
+    app.delete(`meme/upvote/id`, (req, res) => {
+
+    });
+    app.post(`/meme/comment`, (req, res) => {
+
+    });
+    app.delete(`/meme/comment/:id`, (req, res) => {
+
+    });
+
+    app.delete(`/meme/:id`, (req, res) => {
+      console.log(`deleting meme ${req.params.id}`);
+      // TODO: add auth check like if the user is a moderator 
+      // at the stem server, grant authentication anyway
     });
 
     //TODO: soft code this
