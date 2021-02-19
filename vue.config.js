@@ -22,11 +22,11 @@ module.exports = {
     });
   },
   devServer: {
-    port: 3000,
     https: (process.env.NO_HTTPS || process.env.PROD) ? false : {
       key: fs.readFileSync(`./local/key.pem`),
       cert: fs.readFileSync(`./local/cert.pem`)},
-    public: `http${process.env.NO_HTTPS ? `` : `s`}://localhost:3000`,
+    public: `http${process.env.NO_HTTPS ? `` : `s`}://localhost:8080`,
+    proxy: `http://localhost:3000`,
   },
   pluginOptions: {
     express: {
