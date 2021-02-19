@@ -9,7 +9,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "express": "vue-cli-service express:watch --https false",
+    "express": "vue-cli-service express:watch --https false --port 3000",
     "express:run": "vue-cli-service express:run --https false",
     "express:prod": "vue-cli-service express:run --https false",
     "relaunch": "git fetch && git reset --hard && git pull && npm install && npm run build && pm2 restart web-server"
