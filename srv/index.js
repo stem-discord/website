@@ -105,12 +105,25 @@ const store = new MongoDBSession({
 
 
 function connectionFactory(dbId) {
-  return mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
+  const conn =  mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
     ...authObj,
   });
+  
+  // if the connection fails
+  conn.catch(e => {
+    console.log(`unable to connect to database ${conn.host}!`);
+    throw e;
+  });
+
+  conn.on(`error`, e => {
+    console.log(`db ${conn.host} encountered an error!`);
+    throw e;
+  });
+
+  return conn;
 }
 
 const cookieSession = connectionFactory(MONGO.session);
