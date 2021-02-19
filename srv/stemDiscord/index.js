@@ -8,20 +8,20 @@ if (DB) {
   const { userInfoPublicSchema } = require(`${__dirname}/db`);
   // TODO: write on markdown about this STEM_DISCORD_DB_DOCUMENT
   const conn = 
-  mongoose.
-    createConnection(
-      `${DB}/${STEM_DISCORD_DB_DOCUMENT ?? `information`}`,
-      {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-      });
+    mongoose.
+      createConnection(
+        `${DB}/${STEM_DISCORD_DB_DOCUMENT ?? `information`}`,
+        {
+          useNewUrlParser: true,
+          useCreateIndex: true,
+          useUnifiedTopology: true,
+        });
 
   const userInfoPublic = 
-      conn.model(
-        `userInfo`,
-        userInfoPublicSchema,
-        `userinfos`);
+    conn.model(
+      `userInfo`,
+      userInfoPublicSchema,
+      `userinfos`);
   //    explicitly use pluralized lowercase version
 
   const expressApi = (() => {
