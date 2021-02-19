@@ -138,6 +138,7 @@ const {
 
 // finally fixed everything
 // TODO: soft code this
+// rewrite this on new code
 const CookieModel = cookieSession.model(MONGO.session, CookieSchema, `cookies`);
 const UserModel = userDb.model(MONGO.users, UserSchema, `users`);
 const MemeModel = memeDb.model(MONGO.memes, MemeSchema, `memes`);
