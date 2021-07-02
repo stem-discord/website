@@ -1,0 +1,15 @@
+{
+  "files.eol": "\n",
+  "editor.detectIndentation": true,
+  "editor.insertSpaces": true,
+  "editor.defaultFormatter": "octref.vetur",
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+}

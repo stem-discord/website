@@ -1,0 +1,40 @@
+.DS_Store
+node_modules
+/dist
+/local
+/dump
+
+# ignore files starting with -
+-*
+
+# ignore folders starting with -
+/-*
+
+
+# database
+database.json
+
+# global env files
+.env
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# request logs
+access.log*
+
+# Editor directories and files
+.idea
+// removed vscode to sync settings
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
