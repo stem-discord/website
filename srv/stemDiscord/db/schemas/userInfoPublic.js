@@ -1,7 +1,7 @@
 const mongoose = require(`mongoose`);
 const userInfo = new mongoose.Schema({
-  server: String,
-  user_id: String,
+  server: {type: String, index: true},
+  user_id: {type: String, index: true},
   stats: {
     questions: { type: Number, default: 0 },
     thanked: { type: Number, default: 0 },
