@@ -14,6 +14,7 @@ const fetch = require(`node-fetch`);
 const getRawBody = require(`raw-body`);
 const contentType = require(`content-type`);
 const stemDiscordServerDb = require(`${__dirname}/stemDiscord`);
+const cors = require(`cors`);
 
 
 require(`dotenv`).config({ path: `../.env` });
@@ -159,6 +160,8 @@ module.exports = (app) => {
     saveUninitialized: false,
     store,
   }));
+
+  app.use(cors());
 
   // logs
   app.use(morgan(`combined`, { stream: accessLogStream }));
