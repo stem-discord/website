@@ -1,37 +1,29 @@
-# Branch is pretty stable. Just do npm install and everything should work pretty fine. **Make sure you have vue cli installed**
+<div align="center">
+<h1>Stem Discord Website</h1>
+<p>Branch is pretty stable. Just install the dependencies and everything should work fine. Make sure that you have Vue CLU installed!</p>
+<p><a href="https://github.com/stem-discord/website/issues/new">[Create Issues]</a> - <a href="https://github.com/stem-discord/website/issues">[View Issues]</a> - <a href="https://stem.help">[View Site]</a></p>
+</div>
 
-# quick start and help with front end
+## Quick Start & Frontend Help
+If you dont have a key and cert, set `NO_HTTPS` on your `.env` file to true. Do `npm run serve` and vue cli will launch a front end hot reload server. It's pretty much out of the box.  If you want to do some fancy stuff, read further.
 
-if you dont have key and cert, set `NO_HTTPS` on your `.env` file to true
-do `npm run serve` and vue cli will launch a front end hot reload server. its pretty much out of the box.  
-if you want to do some fancy stuff, read below
+## I'm bored... what do I do?
+[todo.md](https://github.com/stem-discord/website/blob/main/todo.md) or ctrl+f -> all documents -> "TODO" and "FIXME"
 
-# im bored what do i do?
+## General Information
+This project uses Node `v15.5.0`. All other module dependencies only work with `v15`. If the project isn't working try deleting `node_modules` and abusing NPM! This project uses [Express](https://expressjs.com/) as a backend. If you want to run the server *WITH* the backend, run `npm run express`. Also make sure to run `npm run build` so that Vue builds files to `./dist`.
 
-ctrl+f -> all documents -> "TODO" and "FIXME"
-
-# node
-
-uses `v15.5.0`. all other module dependencies only work with `v15`. if you project doesn't work just delete `node_modules` and abuse npm
-
-# express
+[Install Node v1.15.5](https://nodejs.org/download/release/v15.5.0/) - [Node v1.15.5 Docs](https://nodejs.org/dist/v15.5.0/docs/api/)
 
 this project uses express as backend. if you want to run this server WITH the backend, `do npm run express`  
 make sure to run `npm run build` so vue can build files to `./dist/`
 
-# website
+## Database
+This project uses a MongoDB database, confuguration information is not provided so use the [the Docs](https://docs.mongodb.com/) if you need help setting up MongoDB.
 
-[stem.help](https://stem.help)
+> Ensure the `mongodb_uri` contains auth info!
 
-# database
-
-Good news, we actually use a mongodb. bad news, good luck configuring it because im not going to put a whole tutorial on how to set up a mongodb
-
-f*king mustarded mongo f\*kin db wont evevn ducking show the mustarded stupid shit where the mongoose doesnt even frikin allow the connection option of pass and user aso you have to cencodiaifna;fioasjhfoidnf;oaisdfnasdo;inf;edosiaunf;oas
-
-> make sure the mongodb_uri contains auth info
-
-# configuring
+# Configuring Templates
 `/srv`
 ```env
 # these are optional
@@ -56,42 +48,32 @@ DISCORD_BOT_TOKEN=the discord BOT token
 DB_CHANNEL=channel id where media gets uploaded
 ```
 
-# pm2
-`npm run relaunch` 
-will automatically reset your environment and run a fresh server
+## Resetting your environment
+In the event that you need to reset your environment, use `npm run relaunch` to automatically reset your environment and run a fresh server! 
 
-# vue setup
-
-## Project setup
-
+## Setting Up Vue
+1. Install Dependencies
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
-
+2. Compile and hot-reloads for development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-
+3. Compile and minify for production
 ```
 npm run build
 ```
-
-### Run your unit tests
-
+4. Run your unit tests
 ```
 npm run test:unit
 ```
-
-### Lints and fixes files
-
+5. Fix Lints and files
 ```
 npm run lint
 ```
+6. Customize configuration
+(See [Configuration Reference](https://cli.vuejs.org/config/))
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+----------------------
+**If you have any concerns of bugs, either [Crete An Issue](https://github.com/stem-discord/website/issues) describing your problem or [Create A Pull Request](https://github.com/stem-discord/website/pulls) solving your problem!**
