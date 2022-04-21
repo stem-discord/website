@@ -5,24 +5,50 @@ const mongoose = require(`mongoose`);
 const express = require(`express`);
 
 if (DB) {
-  const { userInfoPublicSchema } = require(`${__dirname}/db`);
+  const { userInfoPublicSchema, 
+    thankedLogSchema,
+    aggregateUserInfoSchema } = require(`${__dirname}/db`);
   // TODO: write on markdown about this STEM_DISCORD_DB_DOCUMENT
   const conn = 
-  mongoose.
-    createConnection(
-      `${DB}/${STEM_DISCORD_DB_DOCUMENT ?? `information`}`,
-      {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-      });
+    mongoose.
+      createConnection(
+        `${DB}/${STEM_DISCORD_DB_DOCUMENT ?? `information`}`,
+        {
+          useNewUrlParser: true,
+          useCreateIndex: true,
+          useUnifiedTopology: true,
+        });
+
+  // give a useful error if  fails
+  conn.catch(e => {
+    console.log(`unable to connect to database ${conn.host}!`);
+    throw e;
+  });
+  
+  conn.on(`error`, e => {
+    console.log(`db ${conn.host} encountered an error!`);
+    throw e;
+  });
 
   const userInfoPublic = 
-      conn.model(
-        `userInfo`,
-        userInfoPublicSchema,
-        `userinfos`);
+    conn.model(
+      `userInfo`,
+      userInfoPublicSchema,
+      `userinfos`);
   //    explicitly use pluralized lowercase version
+
+  const thankedLog = 
+    conn.model(
+      `thankedLog`,
+      thankedLogSchema,
+      `thankedlogs`);
+  
+  const aggregateUserInfo =
+    conn.model(
+      `aggregateUserInfo`,
+      aggregateUserInfoSchema,
+      `aggregateuserinfos`);
+    
 
   const expressApi = (() => {
     const app = express();
@@ -49,6 +75,31 @@ if (DB) {
         return res.status(404).json({message:`user is not found`});
       q._id = undefined;
       res.json(q);
+    });
+
+    // This is a bad hack. Use express middleware instead
+    app.get(`/userdata`, async (req, res) => {
+      const { server, user_id } = req.query;
+      if (!server) 
+        return res.status(400).json({ message: `no server id provided`});
+      if (!user_id) 
+        return res.status(400).json({ message: `no user id provided` });
+      const q = await userInfoPublic.findOne(
+        { server, user_id }, 
+        {  },
+      ).lean();
+      const q2 = await thankedLog.findOne(
+        { server, user_id }, 
+        {  },
+      ).lean();
+      if (q === null && q2 === null) 
+        return res.status(404).json({message:`user is not found`});
+      q._id = undefined;
+      q2._id = undefined;
+      res.json({
+        userInfo: q,
+        thankedLog: q2,
+      });
     });
     return app;
   })();

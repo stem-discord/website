@@ -14,6 +14,7 @@ const fetch = require(`node-fetch`);
 const getRawBody = require(`raw-body`);
 const contentType = require(`content-type`);
 const stemDiscordServerDb = require(`${__dirname}/stemDiscord`);
+const cors = require(`cors`);
 
 
 require(`dotenv`).config({ path: `../.env` });
@@ -105,12 +106,25 @@ const store = new MongoDBSession({
 
 
 function connectionFactory(dbId) {
-  return mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
+  const conn =  mongoose.createConnection(`${MONGODB_URI}/${dbId}`, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
     ...authObj,
   });
+  
+  // if the connection fails
+  conn.catch(e => {
+    console.log(`unable to connect to database ${conn.host}!`);
+    throw e;
+  });
+
+  conn.on(`error`, e => {
+    console.log(`db ${conn.host} encountered an error!`);
+    throw e;
+  });
+
+  return conn;
 }
 
 const cookieSession = connectionFactory(MONGO.session);
@@ -125,6 +139,7 @@ const {
 
 // finally fixed everything
 // TODO: soft code this
+// rewrite this on new code
 const CookieModel = cookieSession.model(MONGO.session, CookieSchema, `cookies`);
 const UserModel = userDb.model(MONGO.users, UserSchema, `users`);
 const MemeModel = memeDb.model(MONGO.memes, MemeSchema, `memes`);
@@ -145,6 +160,8 @@ module.exports = (app) => {
     saveUninitialized: false,
     store,
   }));
+
+  app.use(cors());
 
   // logs
   app.use(morgan(`combined`, { stream: accessLogStream }));
@@ -446,9 +463,6 @@ module.exports = (app) => {
     res.redirect(`/`);
   }); 
 
-  // vue view
-  app.use(require(`connect-history-api-fallback`)());
-
   // // vue output
   // app.set(`views`, `dist`);
   // app.set(`view engine`, `html`);
@@ -456,7 +470,7 @@ module.exports = (app) => {
   // TODO: i was originally going to use views instead of static but for 
   // some reason i cant get views to work and the below works 
   // just fine idk maybe ill fix it when im better at express or smth
-  app.use(express.static(`dist`));
+  // app.use(express.static(`dist`));
 
   
   // app.post('/bar', (req, res) => {

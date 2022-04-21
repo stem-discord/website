@@ -31,6 +31,7 @@ client.on(`message`, async message => {
 });
 
 async function uploadFile(file, name, options) {
+  await login;
   if (!file) throw new Error(`file is nullish`);
   await login;
   const fileArgs = [];
@@ -54,6 +55,8 @@ client.login(DISCORD_BOT_TOKEN)
   .then(() => {
     clientLogin(); 
     console.log(`logged in as ${client.user.username}`);
+  }).catch(e => {
+    console.error(e);
   });
 async function guilds() {
   await login;
